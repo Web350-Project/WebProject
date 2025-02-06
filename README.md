@@ -1,7 +1,6 @@
 QU Student Management Web Application
 📌 Project Overview
 The QU Student Management Web Application is a web-based platform designed to facilitate student and course management for the CSE department at Qatar University. The application supports students, instructors, and administrators in handling course registrations, tracking learning paths, managing course offerings, and submitting grades.
-
 🚀 Features
 ✅ User Roles
 Students: Register for courses, view completed courses, and track learning progress.
