@@ -1,0 +1,70 @@
+.heading{
+    display: flex;
+    justify-content: space-between;
+  
+    padding: 20px;
+    background-color: white; 
+}
+.iconsHead{
+    display: flex;
+    align-items: center;
+    gap: 90px; /* Space between logo and icons */
+    padding: 0px 8rem;
+
+}
+header ion-icon{
+    width: 3rem;
+    height: 8rem;
+    color: #912645;
+    filter: drop-shadow(2px 3px 4px rgba(0, 0, 0, 0.5));
+}
+#logo{
+    width: 23%;
+    height: auto; 
+    filter: drop-shadow(2px 3px 4px rgba(0, 0, 0, 0.5));
+}
+div nav{
+    display: flex;
+    color: white;
+    justify-content: center; 
+    align-items: center;
+    height: 5rem; 
+    background-color: rgb(38, 38, 38);
+}
+#course{
+    font-size: 3rem;
+    color: white;
+    margin: 20rem;
+}
+div nav div{
+    align-items: center;
+    margin-left: auto;
+    display: flex;
+    height:3.5rem;
+    
+    
+}
+div nav div div {
+   
+    background-color: #5A5959;
+    margin: 0.2rem;
+    gap:0.6rem;
+    padding: 9px 6rem;
+}
+a{
+    font-size: larger;
+    color: white;
+    text-decoration: none;
+    
+}
+.courseclass:has(a:hover){
+    background-color:#912645; 
+}
+a:hover ion-icon{
+    color:black; 
+}
+ion-icon{
+    font-size: 2rem;
+    
+    
+}
