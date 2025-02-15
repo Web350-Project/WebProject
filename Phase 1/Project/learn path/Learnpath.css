@@ -1,4 +1,5 @@
 .heading{
+    flex-shrink: 1;
     display: flex;
     justify-content: space-between;
   
@@ -6,65 +7,82 @@
     background-color: white; 
 }
 .iconsHead{
+    flex-shrink: 1;
     display: flex;
     align-items: center;
-    gap: 90px; /* Space between logo and icons */
+    gap: 90px;
     padding: 0px 8rem;
 
 }
 header ion-icon{
+    flex-shrink: 1;
     width: 3rem;
     height: 8rem;
     color: #912645;
     filter: drop-shadow(2px 3px 4px rgba(0, 0, 0, 0.5));
 }
 #logo{
-    width: 23%;
-    height: auto; 
+    width: 25.6rem;
+    height: auto;
+   flex-shrink: 0;
+     
     filter: drop-shadow(2px 3px 4px rgba(0, 0, 0, 0.5));
 }
 div nav{
+    flex-shrink: 1;
     display: flex;
     color: white;
-    justify-content: center; 
+    justify-content: space-between;
     align-items: center;
-    height: 5rem; 
+    height: 5rem;
+    width: 119rem;
     background-color: rgb(38, 38, 38);
+   
+  
+}
+
+.rectangle-container{
+    display: flex;
+    flex-shrink: 1;
 }
 #course{
+   margin-left:12rem;
+    flex-shrink: 1;
     font-size: 3rem;
     color: white;
-    margin: 20rem;
+    
 }
-div nav div{
-    align-items: center;
-    margin-left: auto;
+.boxes-container{
+    flex-shrink: 1;
     display: flex;
-    height:3.5rem;
     
     
 }
-div nav div div {
-   
+.courseclass {
+    white-space: nowrap;
+    max-height: 2.2rem;
+    flex-shrink: 1;
     background-color: #5A5959;
     margin: 0.2rem;
-    gap:0.6rem;
-    padding: 9px 6rem;
+    padding: 1.2rem 6rem;
+    
 }
-a{
-    font-size: larger;
+.courselinks{
+    font-size:120%;
     color: white;
     text-decoration: none;
     
+    
 }
 .courseclass:has(a:hover){
+    
     background-color:#912645; 
 }
 a:hover ion-icon{
     color:black; 
 }
-ion-icon{
-    font-size: 2rem;
+.courseclass:has(ion-icon){
     
+    font-size: 1.5rem;
     
 }
