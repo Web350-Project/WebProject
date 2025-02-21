@@ -1,8 +1,18 @@
-.heading{
+*{
+    margin: 0;
+    padding: 0;
+}
+.container{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto 1fr;
+}
+.header-container{
+    grid-row: 1/2;
+    grid-column: 1/2;
     flex-shrink: 1;
     display: flex;
     justify-content: space-between;
-  
     padding: 20px;
     background-color: white; 
 }
@@ -28,22 +38,20 @@ header ion-icon{
      
     filter: drop-shadow(2px 3px 4px rgba(0, 0, 0, 0.5));
 }
-div nav{
-    flex-shrink: 1;
-    display: flex;
+.navigation-container{
+    background-color: rgb(38, 38, 38);
     color: white;
+    grid-row: 2/3;
+    grid-column: 1/2;
+    display: flex;
     justify-content: space-between;
-    align-items: center;
     height: 5rem;
     width: 119rem;
-    background-color: rgb(38, 38, 38);
-   
-  
+    margin-left: 0.4%;
+    
 }
-
-.rectangle-container{
-    display: flex;
-    flex-shrink: 1;
+.navigation-container p{
+    margin-top: 2.5%;
 }
 #course{
    margin-left:12rem;
@@ -85,4 +93,69 @@ a:hover ion-icon{
     
     font-size: 1.5rem;
     
+}
+.Display-courses{
+    grid-row: 3/4;
+    grid-column: 1/2;
+    display: flex;
+    gap: 20px;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    background-color: #912645;
+    width: 119rem;
+    margin-left: 0.4%;
+    align-content: start;
+}
+.course {
+    margin: 1rem;
+    filter: drop-shadow(2px 3px 4px rgba(0, 0, 0, 0.5));
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1 1 calc(33.33% - 10px); 
+    max-width: calc(33.33% - 60px);
+    width: 18rem;
+    height: 25rem; 
+    box-sizing: border-box;
+    background-color: whitesmoke;
+    padding: 1rem;
+    text-align: center;
+    border-radius: 5%;
+}
+.course-img {
+    filter: drop-shadow(2px 3px 4px rgba(0, 0, 0, 0.5));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.course-img img {
+    padding: 0px;
+    margin: 0px;
+    width:34rem;
+    border-radius: 5%;
+    height: 20rem;
+    object-fit: cover;
+}
+
+.course-text {
+  
+    filter: drop-shadow(2px 3px 4px rgba(0, 0, 0, 0.5));
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    padding: 0.5rem;
+}
+#course-name{
+    font-size: 180%;
+    margin-top: 1.5%;
+}
+#grade{
+    font-size: medium;
+    background-color: #5A5959;
+    margin-top: 1%;
+    margin-bottom: 2%;
+    border-radius: 30%;
+    padding: 10px  15px;
 }
