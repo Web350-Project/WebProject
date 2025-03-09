@@ -3,6 +3,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
+    font-size: large;
 }
 
 
@@ -21,9 +22,6 @@ header{
     grid-column: 1/2;
     display: grid;
     grid-template-rows: auto 1fr;
-    align-items: center;
-    justify-content: center; 
-
 
 }
 header img{
@@ -35,11 +33,6 @@ header img{
 }
 header nav {
     grid-row: 2/3;
-    display: flex;
-    justify-content: center; 
-    align-items: center; 
-
-
 }
 nav ul {
     list-style-type: none; 
@@ -52,7 +45,6 @@ nav ul li{
 nav ul li a{
     color: white;
     text-decoration: none;
-    font-size: x-large;
 }
 nav ul li a:hover{
     color: black;
@@ -87,7 +79,7 @@ form input{
     height: 2.5rem;
     width: 30%;
     background-color: #D9D9D9;
-    border-radius: 0.5rem;
+    border-radius: 0.7rem;
     padding: 10px;
     font-size: large;
 }
@@ -100,4 +92,15 @@ form input::placeholder{
 table{
     grid-row: 2 /3;
     width: 100%;
+    border: 3px black solid;
+    border: none; 
+}
+td,th{
+    text-align: center;
+    padding: 5px;
+    border: 3px black solid;
+}
+td input{
+    padding: 7px;
+    border-radius: 1rem;
 }

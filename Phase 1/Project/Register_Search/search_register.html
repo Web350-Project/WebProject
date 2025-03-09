@@ -19,39 +19,37 @@
         </ul>
       </nav>
     </header>
+
     <div id="body-cont">
     <main>
       <h2>Available Courses</h2>
       <hr>
         <form action="">
-            <input type="search" name="search" id="search" placeholder="Search for a course">
+            <input type="search" name="search" id="search" placeholder="Search for a course" onsearch="display()">
         </form>
 
-        <table border="2px">
+        <table>
+          <thead> 
             <tr>
-                <td>Course Number</td>
-                <td>Title</td>
-                <td>Section</td>
-                <td>Instructor</td>
-                <td>Campus</td>
-                <td>Category</td>
-                <td>Seats</td>
-                <td>Registeration</td>
+                <th>Course Number</th>
+                <th>Name</th>
+                <th>Section</th>
+                <th>CH</th>
+                <th>Instructor</th>
+                <th>Campus</th>
+                <th>Category</th>
+                <th>Seats</th>
+                <th>Registration</th>
             </tr>
-            <tr>
-                <td>CMPS151</td>
-                <td>Programming Concept</td>
-                <td>L01</td>
-                <td>xxxx</td>
-                <td>Male</td>
-                <td>Programming</td>
-                <td>30/50</td>
-                <td> <input type="button" value="register"></td>
-            </tr>
+          </thead>
+          <tbody id="coursesTable"> 
+            
+          </tbody>
+            
         </table>
     </main>
   </div>
-
+  <script src="course.js"></script>
   </body>
 
 </html>
