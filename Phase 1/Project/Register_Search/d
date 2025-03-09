@@ -54,22 +54,21 @@ document.addEventListener("DOMContentLoaded", function () {
             console.error("Error displaying courses:", error);
         }
     }
-
+    async function searchCourses() {
+        try {
+            const query = document.querySelector("#search").value.toLowerCase();
+            const response = await fetch('/courses.json');
+            const data = await response.json();
+            const filteredCourses = data.filter(course =>
+                course.CNo.toLowerCase().includes(query) ||
+                course.Category.toLowerCase().includes(query)
+            );
+            displayCourses(filteredCourses);
+        } catch (error) {
+            console.error("Error searching courses:", error);
+        }
+    }
     
 searchCourses();
 loadCourses();
 });
-async function searchCourses() {
-    try {
-        const query = document.querySelector("#search").value.toLowerCase();
-        const response = await fetch('/courses.json');
-        const data = await response.json();
-        const filteredCourses = data.filter(course =>
-            course.CNo.toLowerCase().includes(query) ||
-            course.Category.toLowerCase().includes(query)
-        );
-        displayCourses(filteredCourses);
-    } catch (error) {
-        console.error("Error searching courses:", error);
-    }
-}
