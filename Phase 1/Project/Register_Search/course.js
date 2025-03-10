@@ -1,73 +1,52 @@
-document.addEventListener("DOMContentLoaded", function () {
+let courses = [];
+
+document.addEventListener("DOMContentLoaded", () => {
     const tableBody = document.querySelector("#coursesTable");
 
     async function loadCourses() {
         try {
             const response = await fetch("courses.json");
-            const data = await response.json(); 
-
-            tableBody.innerHTML = "";
-
-            data.forEach(course => {
-                tableBody.innerHTML += `
-                    <tr>
-                        <td>${course.CNo}</td>
-                        <td>${course.CName}</td>
-                        <td>${course.Section}</td>
-                        <td>${course.CH}</td>
-                        <td>${course.Instructor}</td>
-                        <td>${course.Campus}</td>
-                        <td>${course.Category}</td>
-                        <td>${course.Seats}</td>
-                        <td> <input type="submit" value="Register"> </td>
-                    </tr>
-                `;
-            });
+            courses = await response.json();
+            displayCourses(courses);
         } catch (error) {
             console.error("Error fetching courses:", error);
         }
     }
 
-
-    async function displayCourses(courses) {
-        try {
-            const list = document.querySelector("#coursesTable");
-            list.innerHTML = ""; 
-            courses.forEach(course => {
-                if (course.available) {
-                    list.innerHTML += `
-                    <tr>
-                        <td>${course.CNo}</td>
-                        <td>${course.CName}</td>
-                        <td>${course.Section}</td>
-                        <td>${course.CH}</td>
-                        <td>${course.Instructor}</td>
-                        <td>${course.Campus}</td>
-                        <td>${course.Category}</td>
-                        <td>${course.Seats}</td>
-                        <td> <input type="submit" value="Register"> </td>
-                    </tr>
-                    `;
-                }
-            });
-        } catch (error) {
-            console.error("Error displaying courses:", error);
-        }
-    }
-
-    
-searchCourses();
-loadCourses();
+    loadCourses();
 });
-async function searchCourses() {
+
+function displayCourses(courses) {
+    const tableBody = document.querySelector("#coursesTable");
+    tableBody.innerHTML = ""; 
+    courses.forEach(course => {
+        if (course.Open) {
+            tableBody.innerHTML += `
+            <tr>
+                <td>${course.CNo}</td>
+                <td>${course.CName}</td>
+                <td>${course.Section}</td>
+                <td>${course.CH}</td>
+                <td>${course.Instructor}</td>
+                <td>${course.Campus}</td>
+                <td>${course.Category}</td>
+                <td>${course.Seats}</td>
+                <td> <input type="submit" value="Register"> </td>
+            </tr>
+            `;
+        }
+    });
+}
+
+function searchCourses() {
     try {
         const query = document.querySelector("#search").value.toLowerCase();
-        const response = await fetch('/courses.json');
-        const data = await response.json();
-        const filteredCourses = data.filter(course =>
-            course.CNo.toLowerCase().includes(query) ||
-            course.Category.toLowerCase().includes(query)
-        );
+        const filteredCourses = query === '' 
+            ? courses // Display all courses if query is empty
+            : courses.filter(course =>
+                course.CNo.toLowerCase().includes(query) ||
+                course.Category.toLowerCase().includes(query)
+            );
         displayCourses(filteredCourses);
     } catch (error) {
         console.error("Error searching courses:", error);
