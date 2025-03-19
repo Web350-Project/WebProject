@@ -12,7 +12,7 @@
     display: grid;
     min-height: 100vh;
     background-color: black;
-    background: url('Computer Science and Engineering - Banner.jpg') no-repeat;
+    background: url('/html/imgs/Computer Science and Engineering - Banner.jpg') no-repeat;
     background-size:cover;
     background-position: -12pc;
     backdrop-filter: blur(8px);
