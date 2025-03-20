@@ -83,7 +83,6 @@ header ion-icon{
     
 }
 #choose{
-    margin-left: 34%;
     color:white;
     font-size: 40px;
 
@@ -105,7 +104,7 @@ a:hover ion-icon{
     grid-column: 1/2;
     display: flex;
     gap: 20px;
-    justify-content: flex-start;
+    justify-content: center;
     flex-wrap: wrap;
     background-color: #912645;
     width: 119rem;
