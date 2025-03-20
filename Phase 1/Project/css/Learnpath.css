@@ -164,3 +164,58 @@ a:hover ion-icon{
     border-radius: 30%;
     padding: 10px  15px;
 }
+@media screen and (max-width: 768px) {
+
+    .container{
+        display: flex;
+        flex-direction: column;
+        width: 75vh;
+        background-color: #5A5959;
+    }
+    .navigation-container{
+        margin: 0px 0px 0px 0px;
+        width:79vh;
+        
+    }
+    .Display-courses{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+
+    }
+    #course{
+        margin: 0px 0px 0px 0px;
+    }
+    .courseclass{
+        width:0.2rem;
+        height: 10%;
+        white-space: nowrap;
+        max-height: 2.2rem;
+        flex-shrink: 1;
+        background-color: #5A5959;
+        margin: 0.1rem;
+        padding: 1.2rem 5.6rem;
+    }
+    .courseclass ion-icon{
+        margin-left: -4.3pc;
+    }
+    .header-container{
+        width: 75vh;
+    }
+    #logo{
+        margin-left: -50px;
+        width: 60%;
+        height: auto;
+    }
+    header ion-icon{
+        margin-left:-40px;
+    }
+    .course-img img {
+        width: min-content;
+        background-color: #912645;
+    }
+    .course{
+        min-width: fit-content;
+    }
+}
