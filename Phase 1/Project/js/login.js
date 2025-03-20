@@ -14,17 +14,20 @@ function check(e){
     const current= user.find(e=> e.username == info.username);
 
     if (current){
-        localStorage.loggedStudent=current.username;
+        
         if (current.password == info.password)
         switch(current.type){
         case "student":
+            localStorage.loggedStudent=current.username;
             window.location.href = "search_register.html";
             break;
         case "admin":
+            localStorage.loggedAdmin=current.username;
             window.location.href = "validatecourses.html";
             break;
         case "instructor":
-            indow.location.href = "grade.html";
+            localStorage.loggedInstructor=current.username;
+            window.location.href = "current.html";
             break;
             }
         else

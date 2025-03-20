@@ -1,7 +1,7 @@
 let Allstudents=[];
 let studentCourse=[];
 students();
-const progress = document.querySelector('#progress')
+const progress = document.querySelector('#in-progress')
 const finished = document.querySelector('#finished')
 const pending = document.querySelector('#pending')
 const coursebox= document.querySelector('#coursesbox');
@@ -12,12 +12,20 @@ async function students() {
     const response = await fetch("/json/students.json");
     Allstudents = await response.json();
     const current= Allstudents.find(e=> e.username === localStorage.loggedStudent);
+    if (current){
+        studentCourse=current.courses;
+        coursebox.innerHTML =`<p id="choose">Choose one of the options above</p>`
+    }
     
-    studentCourse=current.courses;
     console.log(studentCourse)
 }
 function loadcourses(e,type){
     e.preventDefault();
+    [progress, finished, pending].forEach(link => {
+        link.style.color = "white"; 
+    });
+    const id = `#${type}`;
+    document.querySelector(id).style.color = "black";
     coursebox.innerHTML = '';
     const filtterCourse = studentCourse.filter(e=> e.status==type);
     filtterCourse.forEach(course=>{

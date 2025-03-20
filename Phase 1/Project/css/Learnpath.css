@@ -82,6 +82,12 @@ header ion-icon{
     
     
 }
+#choose{
+    margin-left: 34%;
+    color:white;
+    font-size: 40px;
+
+}
 .courseclass:has(a:hover){
     
     background-color:#912645; 
