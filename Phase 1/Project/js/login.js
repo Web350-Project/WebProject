@@ -16,13 +16,16 @@ function check(e){
     if (current){
         localStorage.loggedStudent=current.username;
         if (current.password == info.password)
-            switch(current.type){
+        switch(current.type){
         case "student":
             window.location.href = "search_register.html";
+            break;
         case "admin":
             window.location.href = "validatecourses.html";
+            break;
         case "instructor":
             indow.location.href = "grade.html";
+            break;
             }
         else
         alert("Wrong password")
