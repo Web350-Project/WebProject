@@ -1,6 +1,7 @@
 let Allstudents=[];
 let studentCourse=[];
 students();
+const search = document.querySelector("#searchbox");
 const progress = document.querySelector('#in-progress')
 const finished = document.querySelector('#finished')
 const pending = document.querySelector('#pending')
@@ -17,18 +18,23 @@ async function students() {
         coursebox.innerHTML =`<p id="choose">Choose one of the options above</p>`
     }
     
-    console.log(studentCourse)
 }
 function loadcourses(e,type){
     e.preventDefault();
+   
     [progress, finished, pending].forEach(link => {
         link.style.color = "white"; 
     });
     const id = `#${type}`;
     document.querySelector(id).style.color = "black";
-    coursebox.innerHTML = '';
     const filtterCourse = studentCourse.filter(e=> e.status==type);
-    filtterCourse.forEach(course=>{
+    display(filtterCourse);
+
+search.addEventListener('input', (e) => searchCourses(e, filtterCourse))
+}
+function display(list) {
+    coursebox.innerHTML = '';
+    list.forEach(course=>{
         coursebox.innerHTML+=`<div class="course"> 
             <div class="course-img">
         <img src="${course.img}" alt="web">   
@@ -39,4 +45,21 @@ function loadcourses(e,type){
             </div>
         </div>
 `;});
+    
+}
+function searchCourses(e,filteredCourse){
+    e.preventDefault();
+    if(search.value){
+    const searchedCourses = filteredCourse.filter(e=> e.CName.toLowerCase().includes(search.value.toLowerCase()))
+    if (searchedCourses.length){
+    display(searchedCourses);
+    }
+    else{
+        coursebox.innerHTML = '';
+        coursebox.innerHTML = `<p id="No-courses">No Courses with that letters</p>`;
+    }
+    }
+    else{
+        display(filteredCourse);
+     }
 }
