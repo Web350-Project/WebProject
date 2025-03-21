@@ -209,7 +209,7 @@ a:hover ion-icon{
         
     }
     .Display-courses{
-        width: 100%;
+        width: 78.7vh;
         display: flex;
         flex-direction: column;
         align-content: center;
@@ -252,7 +252,7 @@ a:hover ion-icon{
     #searchclass{
    
         background-color: #912645;
-        width: 85vh;
+        width: 78.7vh;
         margin-left: 0.4%;
         align-content: center;
         
