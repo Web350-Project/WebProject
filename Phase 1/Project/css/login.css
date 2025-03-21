@@ -107,3 +107,21 @@ button{
     font-weight: 500;
     filter: drop-shadow(10px 10px 10px rgba(0, 0, 0, 0.5));
 }
+@media screen and (max-width: 768px) {
+    body{
+        display: flex;
+        flex-direction: column;
+    }
+    #qulogo{
+        justify-self: center;
+        align-self: center;
+        width:80% ;
+        height: auto;
+        }
+        .login-class{
+            justify-self: center;
+            align-self: center;
+            margin-left: 0%;
+            width: 100%;
+        }
+}
