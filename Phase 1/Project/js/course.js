@@ -20,7 +20,7 @@ function displayCourses(courses) {
     const tableBody = document.querySelector("#coursesTable");
     tableBody.innerHTML = ""; 
     courses.forEach(course => {
-        if (course.Open) {
+        if (course.status==="open") {
             tableBody.innerHTML += `
             <tr>
                 <td>${course.CNo}</td>
