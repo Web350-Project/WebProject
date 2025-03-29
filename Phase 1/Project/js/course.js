@@ -39,7 +39,6 @@ function displayCourses(courses) {
         }
     });
 
-    // Attach event listeners to all "Register" buttons after rendering
     document.querySelectorAll('.register-btn').forEach(button => {
         button.addEventListener('click', (event) => {
             registerCourse(localStorage.loggedStudent, event);
@@ -66,7 +65,6 @@ function registerCourse(studentUsername, event) {
     let students = localStorage.students ? JSON.parse(localStorage.students) : [];
     let courses = localStorage.courses ? JSON.parse(localStorage.courses) : [];
 
-    // If no data in localStorage, fetch initial data
     async function getStudent() {
         if (students.length === 0) {
             const response = await fetch("/json/students.json");
@@ -97,7 +95,6 @@ function registerCourse(studentUsername, event) {
             return;
         }
 
-        // Check if the course is already registered
         const alreadyRegistered = student.courses.some(c => 
             c.CNo === course.CNo && 
             (c.status === "in-progress" || c.status === "finished" || c.status === "pending")
@@ -109,12 +106,11 @@ function registerCourse(studentUsername, event) {
         }
 
         const [available, total] = course.Seats.split('/').map(Number);
-        if (available <= 0) { // Changed to <= 0 to reflect no available seats
+        if (available <= 0) { 
             alert("No seats available for this course.");
             return;
         }
 
-        // Check prerequisites
         if (course.Prereq && course.Prereq.length > 0) {
             const missingPrereqs = course.Prereq.filter(prereq => {
                 const completed = student.courses.some(c => 
@@ -131,7 +127,6 @@ function registerCourse(studentUsername, event) {
             }
         }
 
-        // Update course seats and student courses
         course.Seats = `${available - 1}/${total}`;
         student.courses.push({
             CName: course.CName,
@@ -141,7 +136,6 @@ function registerCourse(studentUsername, event) {
             grade: "N/A"
         });
 
-        // Save updated data to localStorage
         localStorage.courses = JSON.stringify(courses);
         localStorage.students = JSON.stringify(students);
 
@@ -149,7 +143,6 @@ function registerCourse(studentUsername, event) {
         displayCourses(courses);
     }
 
-    // Start the process
     if (students.length === 0 || courses.length === 0) {
         getStudent();
     } else {
