@@ -69,14 +69,7 @@
                 "status": "finished",
                 "grade": "A"
             }
-            ,
-            {
-                "CName": "SQL",
-                "CNo": "CMPS330",
-                "status": "pending",
-                "img": "/html/imgs/SQL.png",
-                "grade": "N/A"
-            }
+            
         ]
 
     }

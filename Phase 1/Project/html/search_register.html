@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -12,7 +13,6 @@
       <img src="/html/imgs/logo1.png" alt="Qatar University"  />
       <nav>
         <ul>
-          <li><a href="">Profile</a></li>
           <li><a href="" style="color: black;">View Available Courses</a></li>
           <li><a href="Learnpath.html">View Learning Path</a></li>
           <li><a href="login.html">Sign Out</a></li>
@@ -28,28 +28,14 @@
         <input type="search" name="search" id="search"  placeholder="Search for a course" oninput="searchCourses()">
         </form>
 
-        <table>
-          <thead> 
-            <tr>
-                <th>Course Number</th>
-                <th>Course Name</th>
-                <th>Section</th>
-                <th>CH</th>
-                <th>Instructor</th>
-                <th>Campus</th>
-                <th>Category</th>
-                <th>Seats</th>
-                <th>Registration</th>
-            </tr>
-          </thead>
-          <tbody id="coursesTable"> 
+        <div id="courseList">
 
-          </tbody>
-            
-        </table>
+        </div>
+
     </main>
   </div>
   <script src="/js/course.js"></script>
   </body>
 
 </html>
+

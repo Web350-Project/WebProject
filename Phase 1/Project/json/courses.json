@@ -9,8 +9,9 @@
         "Instructor": "xyz",
         "Campus": "Male",
         "Prereq": [],
-        "Seats":"30/50",
-        "status": "open"
+        "Seats": "30/50",
+        "status": "open",
+        "CRN": 22527
     },
     {
         "CName": "Programming Concept",
@@ -22,8 +23,9 @@
         "Instructor": "xyz",
         "Campus": "Male",
         "Prereq": [],
-        "Seats":"5/50",
-        "status": "open"
+        "Seats": "5/50",
+        "status": "open",
+        "CRN": 21981
     },
     {
         "CName": "Programming Concept",
@@ -35,8 +37,9 @@
         "Instructor": "xyz",
         "Campus": "Female",
         "Prereq": [],
-        "Seats":"50/50",
-        "status": "Wapproval"
+        "Seats": "50/50",
+        "status": "Wapproval",
+        "CRN": 22520
     },
     {
         "CName": "Object-Oriented Programming",
@@ -47,9 +50,10 @@
         "CH": 4,
         "Instructor": "xyz",
         "Campus": "Male",
-        "Prereq": [ "CMPS151" ],
-        "Seats":"40/50",
-        "status": "open"
+        "Prereq": ["CMPS151"],
+        "Seats": "40/50",
+        "status": "open",
+        "CRN": 22793
     },
     {
         "CName": "Data Structure",
@@ -60,9 +64,10 @@
         "CH": 4,
         "Instructor": "xyz",
         "Campus": "Male",
-        "Prereq":["CMPS251" ],
-        "Seats":"45/50",
-        "status": "open"
+        "Prereq": ["CMPS251"],
+        "Seats": "45/50",
+        "status": "open",
+        "CRN": 21058
     },
     {
         "CName": "SQL",
@@ -74,8 +79,9 @@
         "Instructor": "xyz",
         "Campus": "Male",
         "Prereq": [],
-        "Seats":"20/50",
-        "status": "open"
+        "Seats": "20/50",
+        "status": "open",
+        "CRN": 21269
     },
     {
         "CName": "Operating System",
@@ -86,9 +92,10 @@
         "CH": 4,
         "Instructor": "xyz",
         "Campus": "Male",
-        "Prereq": ["CMPS303","CMPE263" ],
-        "Seats":"50/50",
-        "status": "Wapproval"
+        "Prereq": ["CMPS303", "CMPE263"],
+        "Seats": "50/50",
+        "status": "Wapproval",
+        "CRN": 22392
     },
     {
         "CName": "Network I",
@@ -99,8 +106,9 @@
         "CH": 4,
         "Instructor": "xyz",
         "Campus": "Male",
-        "Prereq": [ "CMPE263" ],
-        "Seats":"50/50",
-        "status": "Wapproval"
+        "Prereq": ["CMPE263"],
+        "Seats": "50/50",
+        "status": "Wapproval",
+        "CRN": 21415
     }
 ]
