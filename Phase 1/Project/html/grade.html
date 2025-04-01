@@ -4,11 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Grade Submission</title>
+    <link rel="stylesheet" href="/css/grade.css">
 </head>
 <body>
-    <header>
-        <img src="/html/imgs/logo1.png" alt="QU">
-    </header>
+    <img src="/html/imgs/logo1.png" alt="Qatar University"  id="logo" />
+        <header>
+            <nav>
+              <ul>
+                <li><a href="current.html">View courses</a></li>
+                <li><a href="login.html">Sign Out</a></li>
+              </ul>
+            </nav>
+          </header>
+
     
     <main>
         <h2>Grade Submission</h2>
@@ -24,6 +32,7 @@
                 <td>Final Exam</td>
                 <td>Total</td>
             </tr>
+            <tr>
             <td>Student 1</td>
             <td>ID</td>
             <td><input type="number" name="Quizzes" id="Quizzes"></td>
@@ -34,6 +43,10 @@
             <td><input type="number" name="Total" id="Total"></td>
         </tr>
         </table>
+        <div class="buttons">
+        <button class="cancel">Cancel</button>
+        <input type="submit" class="submit">
+    </div>
     </main>
 </body>
 </html>

@@ -33,5 +33,10 @@
     "username": "admin1",
     "password": "123",
     "type": "admin"
+},
+{
+    "username": "profRami",
+    "password": "123",
+    "type":"instructor"
 }
 ]
