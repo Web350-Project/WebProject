@@ -1,114 +1,66 @@
 [
     {
         "CName": "Programming Concept",
-        "img": "/html/imgs/concept.jpg",
         "CNo": "CMPS151",
         "Category": "Programming",
-        "Section": "L01",
         "CH": 3,
-        "Instructor": "xyz",
-        "Campus": "Male",
-        "Prereq": [],
-        "Seats": "30/50",
         "status": "open",
-        "CRN": 22527
+        "Prereq": []
     },
     {
         "CName": "Programming Concept",
-        "img": "/html/imgs/concept.jpg",
         "CNo": "CMPS151",
         "Category": "Programming",
-        "Section": "L02",
         "CH": 3,
-        "Instructor": "xyz",
-        "Campus": "Male",
-        "Prereq": [],
-        "Seats": "5/50",
         "status": "open",
-        "CRN": 21981
+        "Prereq": []
     },
     {
         "CName": "Programming Concept",
-        "img": "/html/imgs/concept.jpg",
         "CNo": "CMPS151",
         "Category": "Programming",
-        "Section": "L51",
         "CH": 3,
-        "Instructor": "xyz",
-        "Campus": "Female",
-        "Prereq": [],
-        "Seats": "50/50",
-        "status": "Wapproval",
-        "CRN": 22520
+        "status": "open",
+        "Prereq": []
     },
     {
         "CName": "Object-Oriented Programming",
-        "img": "/html/imgs/oop.jpg",
         "CNo": "CMPS251",
         "Category": "Programming",
-        "Section": "L01",
         "CH": 4,
-        "Instructor": "xyz",
-        "Campus": "Male",
-        "Prereq": ["CMPS151"],
-        "Seats": "40/50",
         "status": "open",
-        "CRN": 22793
+        "Prereq": ["CMPS151"]
     },
     {
         "CName": "Data Structure",
-        "img": "/html/imgs/dataS.jpg",
         "CNo": "CMPS303",
         "Category": "Programming",
-        "Section": "L01",
         "CH": 4,
-        "Instructor": "xyz",
-        "Campus": "Male",
-        "Prereq": ["CMPS251"],
-        "Seats": "45/50",
         "status": "open",
-        "CRN": 21058
+        "Prereq": ["CMPS251"]
     },
     {
         "CName": "SQL",
-        "img": "/html/imgs/SQL.jpg",
         "CNo": "CMPS330",
         "Category": "Databases",
-        "Section": "L01",
         "CH": 3,
-        "Instructor": "xyz",
-        "Campus": "Male",
-        "Prereq": [],
-        "Seats": "20/50",
         "status": "open",
-        "CRN": 21269
+        "Prereq": []
     },
     {
         "CName": "Operating System",
-        "img": "/html/imgs/OS.jpg",
         "CNo": "CMPS405",
         "Category": "Programming",
-        "Section": "L01",
         "CH": 4,
-        "Instructor": "xyz",
-        "Campus": "Male",
-        "Prereq": ["CMPS303", "CMPE263"],
-        "Seats": "50/50",
-        "status": "Wapproval",
-        "CRN": 22392
+        "status": "open",
+        "Prereq": ["CMPS303", "CMPE263"]
     },
     {
         "CName": "Network I",
-        "img": "/html/imgs/network.jpg",
         "CNo": "CMPE355",
         "Category": "Networking",
-        "Section": "L01",
         "CH": 4,
-        "Instructor": "xyz",
-        "Campus": "Male",
-        "Prereq": ["CMPE263"],
-        "Seats": "50/50",
-        "status": "Wapproval",
-        "CRN": 21415
+        "status": "open",
+        "Prereq": ["CMPE263"]
     }
 ]

@@ -4,6 +4,7 @@ else {
     displayCourses(courses);
 }
 const tableBody = document.querySelector("#coursesTable");
+const maincontent= document.querySelector("#main-content")
    
 async function loadCourses() {
             const response = await fetch("/json/courses.json");
@@ -78,3 +79,10 @@ function CancelCourse(Cno ,Section){
     localStorage.courses=JSON.stringify(courses);
     displayCourses(courses);
 }
+async function loadForm(pageUrl){
+    const page = await fetch(pageUrl)
+    const pageHTMLContent = await page.text()
+    maincontent.innerHTML = pageHTMLContent;
+    const recipeData = document.querySelector("#add-recipe-form");
+}
+

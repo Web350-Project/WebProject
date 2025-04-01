@@ -20,15 +20,16 @@
     </header>
 
     <div id="body-cont">
-    <main>
       <h2>Validate Courses</h2>
+    <main id="main-content">
+      
       <hr>
       <form action="" onsubmit="return false;">
         <input type="search" name="search" id="search"  placeholder="Search for a course" oninput="searchCourses()">
         </form>
         <div id="buttons">
-            <button>Add Course</button>
-            <button>Add Class</button>
+            <button onclick="loadForm('add_course.html')">Add Course</button>
+            <button onclick="loadForm('add_class.html')">Add Class</button>
         </div>
         <table>
           <thead> 
