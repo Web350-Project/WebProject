@@ -21,39 +21,22 @@
 
     <div id="body-cont">
       <h2>Validate Courses</h2>
-    <main id="main-content">
-      
-      <hr>
-      <form action="" onsubmit="return false;">
-        <input type="search" name="search" id="search"  placeholder="Search for a course" oninput="searchCourses()">
+      <main id="main-content">
+        <form action="" onsubmit="return false;">
+          <input type="search" name="search" id="search" placeholder="Search for a course" oninput="searchCourses()">
         </form>
+        
         <div id="buttons">
-            <button onclick="loadCourseForm('add_course.html')">Add Course</button>
-            <button onclick="loadClassForm('add_class.html')">Add Class</button>
+          <button onclick="loadCourseForm('add_course.html')">Add Course</button>
+          <button onclick="loadClassForm('add_class.html')">Add Class</button>
         </div>
-        <table>
-          <thead> 
-            <tr>
-              <th>Course Number</th>
-              <th>Course Name</th>
-              <th>Section</th>
-              <th>CH</th>
-              <th>Instructor</th>
-              <th>Campus</th>
-              <th>Category</th>
-              <th>Seats</th>
-              <th>Status</th>
-            </tr>
-          </thead>
-          <tbody id="coursesTable"> 
-
-          </tbody>
-            
-        </table>
-    </main>
-  </div>
-  <script src="/js/register.js"></script>
-  <script src="/js/signOut.js"></script>
+        
+        <div id="courseList">
+          <!-- Course cards will be dynamically inserted here -->
+        </div>
+      </main>
+    </div>
+    <script src="/js/register.js"></script>
+    <script src="/js/signOut.js"></script>
   </body>
-
 </html>

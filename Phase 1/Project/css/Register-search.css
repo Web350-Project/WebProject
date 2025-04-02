@@ -183,8 +183,7 @@ form input::placeholder {
     transition: background-color 0.3s ease;
 }
 
-/* Media Query for Mobile Devices (max-width: 600px) */
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 768px) {
     body {
         grid-template-columns: 1fr;
         grid-template-rows: auto 1fr;
