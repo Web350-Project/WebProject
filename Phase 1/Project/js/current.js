@@ -1,14 +1,20 @@
+let classes = localStorage.classes ? JSON.parse(localStorage.classes) : [];
+if (classes.length === 0)
+    loadclasses();
 let Instructor=[];
 let currentCourses=[];
 info()
+async function loadclasses() {
+    const response2 = await fetch("/json/classes.json");
+    classes = await response2.json();
+}
 let Allclasses=[];
 const search = document.querySelector("#searchbox");
 const coursebox= document.querySelector('#coursesbox');
 async function info() {
     const response = await fetch("/json/instructor.json");
     Instructor = await response.json();
-    const response2 = await fetch("/json/classes.json");
-    Allclasses = await response2.json();
+   
     console.log(Allclasses)
     const current= Instructor.find(e=> e.username === localStorage.loggedInstructor);
     console.log(current)
@@ -16,7 +22,7 @@ async function info() {
     
 }
 function findcurrentcourses(CRNS){
-    currentCourses = Allclasses.filter(obj => CRNS.includes(obj.CRN));
+    currentCourses = classes.filter(obj => CRNS.includes(obj.CRN));
     console.log(currentCourses)
     display(currentCourses);
 }

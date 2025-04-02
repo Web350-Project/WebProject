@@ -1,16 +1,25 @@
-let Allstudents=[];
+
+let Allstudents = localStorage.students ? JSON.parse(localStorage.students) : [];
+if (Allstudents.length === 0)
+    loadAllstudents();
+async function loadAllstudents() {
+    const response2 = await fetch("/json/students.json");
+    Allstudents = await response2.json();
+}
 let Cstudents = []
-let Allclasses=[];
+let classes = localStorage.classes ? JSON.parse(localStorage.classes) : [];
+if (classes.length === 0)
+    loadclasses();
+async function loadclasses() {
+    const response2 = await fetch("/json/classes.json");
+    classes = await response2.json();
+}
 const table = document.querySelector("#maintable");
 info()
 async function info() {
-    const response = await fetch("/json/classes.json");
-    Allclasses = await response.json();
     const response2 = await fetch("/json/students.json");
     Allstudents = await response2.json();
-    console.log( Allstudents)
-    console.log(localStorage.currentCRN)
-    const course= Allclasses.find(e=> e.CRN==localStorage.currentCRN) 
+    const course= classes.find(e=> e.CRN==localStorage.currentCRN) 
     course.students.forEach(studentUsername => {
         const student = Allstudents.find(e => e.username === studentUsername);
         if (student) {
