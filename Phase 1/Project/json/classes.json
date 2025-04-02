@@ -119,4 +119,20 @@
         "CRN": 21415,
         "students":[]
     }
+    ,
+    {
+        "CName": "Discrete",
+        "img": "..",
+        "CNo": "CMPS205",
+        "Category": "Programming",
+        "Section": "L01",
+        "CH": 3,
+        "Instructor": "xyz",
+        "Campus": "Male",
+        "Prereq": ["CMPE263"],
+        "Seats": "0/50",
+        "status": "open",
+        "CRN": 21499,
+        "students":[]
+    }
 ]
