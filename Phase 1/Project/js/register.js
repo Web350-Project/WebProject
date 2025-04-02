@@ -5,10 +5,15 @@ else {
 }
 const tableBody = document.querySelector("#coursesTable");
 const maincontent= document.querySelector("#main-content")
-   
+
+loadCourseOptions()
+
 async function loadCourses() {
             const response = await fetch("/json/courses.json");
-            courses = await response.json();
+            let cData = await response.json();
+            const response2 = await fetch("/json/classes.json");
+            let classes = await response2.json();
+            courses=[cData,classes].flat()
             localStorage.courses=JSON.stringify(courses);
             displayCourses(courses);
     }
@@ -79,10 +84,46 @@ function CancelCourse(Cno ,Section){
     localStorage.courses=JSON.stringify(courses);
     displayCourses(courses);
 }
-async function loadForm(pageUrl){
+async function loadClassForm(pageUrl){
     const page = await fetch(pageUrl)
     const pageHTMLContent = await page.text()
     maincontent.innerHTML = pageHTMLContent;
-    const recipeData = document.querySelector("#add-recipe-form");
+    const classData = document.querySelector("#add-class-form");
 }
-
+async function loadCourseForm(pageUrl){
+    const page = await fetch(pageUrl)
+    const pageHTMLContent = await page.text()
+    maincontent.innerHTML = pageHTMLContent;
+    const courseOptions= document.querySelector("#prerequisite")
+    loadCourseOptions(courseOptions);
+    const courseData = document.querySelector("#add-course-form");
+    courseData.addEventListener('submit', handleCourseSubmit)
+}
+async function loadCourseOptions(element){
+    const response = await fetch("/json/courses.json");
+    let cData = await response.json();
+    const courseOptions = cData
+    .map(course => `<option value="${course.CNo}">${course.CName}</option>`);
+    element.innerHTML = courseOptions.join(' ');
+}
+function handleCourseSubmit(e){
+    e.preventDefault();
+    const data = new FormData(e.target);
+    const course = Object.fromEntries(data);
+    courses.push({
+        "CName": course["CName"],
+        "img": course["img"],
+        "CNo": course["CNo"],
+        "Category": course["Category"],
+        "Section": course["Section"],
+        "CH": course["CH"],
+        "Instructor": course["Instructor"],
+        "Campus": course["Campus"],
+        "Prereq": course["Prereq"],
+        "Seats": course["Seats"],
+        "status": course["status"],
+        "CRN": course["CRN"]
+    })
+    localStorage.courses=JSON.stringify(courses);
+    displayCourses(courses);
+}
