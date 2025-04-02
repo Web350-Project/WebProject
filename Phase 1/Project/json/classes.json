@@ -11,7 +11,8 @@
         "Prereq": [],
         "Seats": "30/50",
         "status": "open",
-        "CRN": 22527
+        "CRN": 22527,
+        "students":["aa2004"]
     },
     {
         "CName": "Programming Concept",
@@ -25,7 +26,8 @@
         "Prereq": [],
         "Seats": "5/50",
         "status": "open",
-        "CRN": 21981
+        "CRN": 21981,
+        "students":[]
     },
     {
         "CName": "Programming Concept",
@@ -39,7 +41,8 @@
         "Prereq": [],
         "Seats": "50/50",
         "status": "Wapproval",
-        "CRN": 22520
+        "CRN": 22520,
+        "students":[]
     },
     {
         "CName": "Object-Oriented Programming",
@@ -53,7 +56,8 @@
         "Prereq": ["CMPS151"],
         "Seats": "40/50",
         "status": "open",
-        "CRN": 22793
+        "CRN": 22793,
+        "students":[]
     },
     {
         "CName": "Data Structure",
@@ -67,11 +71,12 @@
         "Prereq": ["CMPS251"],
         "Seats": "45/50",
         "status": "open",
-        "CRN": 21058
+        "CRN": 21058,
+        "students":[]
     },
     {
         "CName": "SQL",
-        "img": "/html/imgs/SQL.jpg",
+        "img": "/html/imgs/SQL.png",
         "CNo": "CMPS330",
         "Category": "Databases",
         "Section": "L01",
@@ -81,7 +86,8 @@
         "Prereq": [],
         "Seats": "20/50",
         "status": "open",
-        "CRN": 21269
+        "CRN": 21269,
+        "students":[]
     },
     {
         "CName": "Operating System",
@@ -95,7 +101,8 @@
         "Prereq": ["CMPS303", "CMPE263"],
         "Seats": "50/50",
         "status": "Wapproval",
-        "CRN": 22392
+        "CRN": 22392,
+        "students":[]
     },
     {
         "CName": "Network I",
@@ -109,6 +116,7 @@
         "Prereq": ["CMPE263"],
         "Seats": "50/50",
         "status": "Wapproval",
-        "CRN": 21415
+        "CRN": 21415,
+        "students":[]
     }
 ]

@@ -3,28 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Current Classes</title>
+    <title>Learning path</title>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <link rel="stylesheet" href="/css/Learnpath.css">
 </head>
 <body>
-    <header>
-        <img src="/html/imgs/logo1.png" alt="Qatar University">
-        <nav>
-            <ul>
-
-
-
-            </ul>
-        </nav>
+    <div class="container">
+    <header class="heading">
+        <div class="header-container">
+        <img src="/html/imgs/logo1.png" id="logo" alt="QU" srcset="">
+        <div class="iconsHead">
+        <a href="search_register.html"><ion-icon  name="home"> </ion-icon></a>
+        <a href=""><ion-icon  name="person"></ion-icon></a>
+        <a href=""><ion-icon name="settings"></ion-icon></a>
+        </div>
+    </div>
     </header>
     <main>
-        <h2>Current Courses</h2>
-        <div class="Course 1"></div>
-        <div class="Course 2"></div>
-        <div class="Course 3"></div>
-        <div class="Course 4"></div>
-        <div class="Course 5"></div>
-
+    <div class="navigation-container">
+        <div>
+            <p id="course">
+                Current Courses
+            </p>
+        </div>
+        </div>
         
-    </main>
+    </div>
+    <div id="searchclass">
+        <form action="" id="search">
+            <input type="search" name="search" id="searchbox"  placeholder="Search for a course">
+            </form>
+    </div>
+    <div class="Display-courses" id="coursesbox">
+        
+    </div>
+
+</main>
+    </div>
+    <script src="/js/current.js" type="module"></script>
 </body>
 </html>

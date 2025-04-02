@@ -21,32 +21,28 @@
     <main>
         <h2>Grade Submission</h2>
 
-        <table border="2px">
-            <tr>
+        <table border="2px" >
+            <thead> <tr>
                 <td>Student Name</td>
                 <td>ID</td>
+                <td>CRN</td>
                 <td>Quizzes</td>
                 <td>HWs</td>
                 <td>Project</td>
                 <td>Midterm Exam</td>
                 <td>Final Exam</td>
                 <td>Total</td>
-            </tr>
-            <tr>
-            <td>Student 1</td>
-            <td>ID</td>
-            <td><input type="number" name="Quizzes" id="Quizzes"></td>
-            <td><input type="number" name="HWs" id="HWs"></td>
-            <td><input type="number" name="Projet" id="Projet"></td>
-            <td><input type="number" name="Midterm_Exam" id="Midterm_Exam"></td>
-            <td><input type="number" name="Final_Exam" id="Final_Exam"></td>
-            <td><input type="number" name="Total" id="Total"></td>
-        </tr>
+            </tr></thead>
+           <tbody id="maintable">
+
+           </tbody>
+           
         </table>
         <div class="buttons">
         <button class="cancel">Cancel</button>
         <input type="submit" class="submit">
     </div>
     </main>
+    <script src="/js/grade.js" type="module"></script>
 </body>
 </html>
