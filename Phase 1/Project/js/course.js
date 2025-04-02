@@ -1,37 +1,37 @@
-let courses = localStorage.courses ? JSON.parse(localStorage.courses) : [];
+let classes = localStorage.classes ? JSON.parse(localStorage.classes) : [];
 
-if (courses.length === 0)
-    loadCourses();
+if (classes.length === 0)
+    loadClasses();
 else
-    displayCourses(courses);
+    displayClasses(classes);
 
-async function loadCourses() {
-    const response = await fetch("/json/courses.json");
-    courses = await response.json();
-    localStorage.courses = JSON.stringify(courses);
-    displayCourses(courses);
+async function loadClasses() {
+    const response = await fetch("/json/classes.json");
+    classes = await response.json();
+    localStorage.classes = JSON.stringify(classes);
+    displayClasses(classes);
 }
 
-function displayCourses(courses) {
+function displayClasses(classes) {
     const tableBody = document.querySelector("#courseList");
     tableBody.innerHTML = ""; 
-    courses.forEach(course => {
-        if (course.status === "open") {
+    classes.forEach(classItem => {
+        if (classItem.status === "open") {
             tableBody.innerHTML += `
-                <div class="course-card" data-crn="${course.CRN}">
+                <div class="course-card" data-crn="${classItem.CRN}">
                     <div class="card-header">
-                        <h2 class="course-name">${course.CName}</h2>
-                        <span class="course-number">Course No: ${course.CNo}</span>
+                        <h2 class="course-name">${classItem.CName}</h2>
+                        <span class="course-number">Course No: ${classItem.CNo}</span>
                     </div>
                     <div class="card-body">
                         <div class="details">
-                            <p><strong>Category:</strong> ${course.Category}</p>
-                            <p><strong>Section:</strong> ${course.Section}</p>
-                            <p><strong>CRN:</strong> ${course.CRN}</p>
-                            <p><strong>Instructor:</strong> ${course.Instructor}</p>
-                            <p><strong>Credit Hours:</strong> ${course.CH}</p>
-                            <p><strong>Campus:</strong> ${course.Campus}</p>
-                            <p><strong>Available Seats:</strong> ${course.Seats}</p>
+                            <p><strong>Category:</strong> ${classItem.Category}</p>
+                            <p><strong>Section:</strong> ${classItem.Section}</p>
+                            <p><strong>CRN:</strong> ${classItem.CRN}</p>
+                            <p><strong>Instructor:</strong> ${classItem.Instructor}</p>
+                            <p><strong>Credit Hours:</strong> ${classItem.CH}</p>
+                            <p><strong>Campus:</strong> ${classItem.Campus}</p>
+                            <p><strong>Available Seats:</strong> ${classItem.Seats}</p>
                             <input type="submit" value="Register" class="register-btn">
                         </div>
                     </div>
@@ -49,21 +49,22 @@ function displayCourses(courses) {
 function searchCourses() {
     try {
         const query = document.querySelector("#search").value.toLowerCase();
-        const filteredCourses = query === '' 
-            ? courses // Display all courses if query is empty
-            : courses.filter(course =>
-                course.CNo.toLowerCase().includes(query) ||
-                course.Category.toLowerCase().includes(query) ||
-                course.CName.toLowerCase().includes(query)
+        const filteredClasses = query === '' 
+            ? classes // Display all classes if query is empty
+            : classes.filter(classItem =>
+                classItem.CNo.toLowerCase().includes(query) ||
+                classItem.Category.toLowerCase().includes(query) ||
+                classItem.CName.toLowerCase().includes(query)
             );
-        displayCourses(filteredCourses);
+        displayClasses(filteredClasses);
     } catch (error) {
-        console.error("Error searching courses:", error);
+        console.error("Error searching classes:", error);
     }
 }
+
 function registerCourse(studentUsername, event) {
     let students = localStorage.students ? JSON.parse(localStorage.students) : [];
-    let courses = localStorage.courses ? JSON.parse(localStorage.courses) : [];
+    let classes = localStorage.classes ? JSON.parse(localStorage.classes) : [];
 
     async function getStudent() {
         if (students.length === 0) {
@@ -71,15 +72,15 @@ function registerCourse(studentUsername, event) {
             students = await response.json();
             localStorage.students = JSON.stringify(students);
         }
-        if (courses.length === 0) {
-            const response = await fetch("/json/courses.json");
-            courses = await response.json();
-            localStorage.courses = JSON.stringify(courses);
+        if (classes.length === 0) {
+            const response = await fetch("/json/classes.json");
+            classes = await response.json();
+            localStorage.classes = JSON.stringify(classes);
         }
         processRegistration(event);
     }
 
-    function processRegistration(event) {
+    function    processRegistration(event) {
         const student = students.find(s => s.username === studentUsername);
         if (!student) {
             alert("Student information not found.");
@@ -88,15 +89,15 @@ function registerCourse(studentUsername, event) {
 
         const courseCard = event.target.closest('.course-card');
         const crn = parseInt(courseCard.getAttribute('data-crn'));
-        let course = courses.find(c => c.CRN === crn);
+        let classItem = classes.find(c => c.CRN === crn);
 
-        if (!course) {
+        if (!classItem) {
             alert("Course information not found.");
             return;
         }
 
         const alreadyRegistered = student.courses.some(c => 
-            c.CNo === course.CNo && 
+            c.CNo === classItem.CNo && 
             (c.status === "in-progress" || c.status === "finished" || c.status === "pending")
         );
 
@@ -105,14 +106,14 @@ function registerCourse(studentUsername, event) {
             return;
         }
 
-        const [available, total] = course.Seats.split('/').map(Number);
+        const [available, total] = classItem.Seats.split('/').map(Number);
         if (available <= 0) { 
             alert("No seats available for this course.");
             return;
         }
 
-        if (course.Prereq && course.Prereq.length > 0) {
-            const missingPrereqs = course.Prereq.filter(prereq => {
+        if (classItem.Prereq && classItem.Prereq.length > 0) {
+            const missingPrereqs = classItem.Prereq.filter(prereq => {
                 const completed = student.courses.some(c => 
                     c.CNo === prereq && 
                     c.status === "finished" && 
@@ -127,23 +128,29 @@ function registerCourse(studentUsername, event) {
             }
         }
 
-        course.Seats = `${available - 1}/${total}`;
+        classItem.Seats = `${available - 1}/${total}`;
+        
+        // Add student to the class's students array if not already there
+        if (!classItem.students.includes(studentUsername)) {
+            classItem.students.push(studentUsername);
+        }
+        
         student.courses.push({
-            CName: course.CName,
-            CNo: course.CNo,
-            img: course.img,
+            CName: classItem.CName,
+            CNo: classItem.CNo,
+            img: classItem.img,
             status: "pending",
             grade: "N/A"
         });
 
-        localStorage.courses = JSON.stringify(courses);
+        localStorage.classes = JSON.stringify(classes);
         localStorage.students = JSON.stringify(students);
 
-        alert(`Successfully registered for ${course.CName} (${course.CNo}).`);
-        displayCourses(courses);
+        alert(`Successfully registered for ${classItem.CName} (${classItem.CNo}).`);
+        displayClasses(classes);
     }
 
-    if (students.length === 0 || courses.length === 0) {
+    if (students.length === 0 || classes.length === 0) {
         getStudent();
     } else {
         processRegistration(event);
