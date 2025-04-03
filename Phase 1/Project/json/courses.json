@@ -8,22 +8,6 @@
         "Prereq": []
     },
     {
-        "CName": "Programming Concept",
-        "CNo": "CMPS151",
-        "Category": "Programming",
-        "CH": 3,
-        "status": "open",
-        "Prereq": []
-    },
-    {
-        "CName": "Programming Concept",
-        "CNo": "CMPS151",
-        "Category": "Programming",
-        "CH": 3,
-        "status": "open",
-        "Prereq": []
-    },
-    {
         "CName": "Object-Oriented Programming",
         "CNo": "CMPS251",
         "Category": "Programming",

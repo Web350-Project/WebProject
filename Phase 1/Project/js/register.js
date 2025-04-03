@@ -103,7 +103,10 @@ async function loadClassForm(pageUrl) {
     const page = await fetch(pageUrl);
     const pageHTMLContent = await page.text();
     maincontent.innerHTML = pageHTMLContent;
+    const courseOptions = document.querySelector("#course");
+    loadCourseOptions(courseOptions);
     const classData = document.querySelector("#add-class-form");
+    classData.addEventListener('submit', handleClassSubmit);
 }
 
 async function loadCourseForm(pageUrl) {
@@ -124,8 +127,34 @@ async function loadCourseOptions(element) {
     element.innerHTML = courseOptions.join(' ');
 }
 
+function handleClassSubmit(e) {
+    const data = new FormData(e.target);
+    const classItem = Object.fromEntries(data);
+    let courseItem= null;
+    for (const element of courses) {
+       if(classItem["course"] === element.CNo){
+        courseItem=element;
+       }
+      }
+    courses.push({
+        "CName": courseItem.CName,
+        "img": classItem["img"],
+        "CNo": courseItem.CNo,
+        "Category":courseItem.Category,
+        "Section": classItem["Section"],
+        "CH": courseItem.CH,
+        "Instructor": classItem["Instructor"],
+        "Campus": classItem["Campus"],
+        "Prereq": courseItem.Prereq,
+        "Seats": classItem["Seats"],
+        "status": "Wapproval",
+        "CRN": classItem["CRN"]
+    });
+    localStorage.courses = JSON.stringify(courses);
+    displayCourses(courses);
+}
+
 function handleCourseSubmit(e) {
-    e.preventDefault();
     const data = new FormData(e.target);
     const course = Object.fromEntries(data);
     courses.push({
@@ -139,7 +168,7 @@ function handleCourseSubmit(e) {
         "Campus": course["Campus"],
         "Prereq": course["Prereq"],
         "Seats": course["Seats"],
-        "status": course["status"],
+        "status": "Wapproval",
         "CRN": course["CRN"]
     });
     localStorage.courses = JSON.stringify(courses);
