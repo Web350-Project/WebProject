@@ -148,7 +148,8 @@ function handleClassSubmit(e) {
         "Prereq": courseItem.Prereq,
         "Seats": classItem["Seats"],
         "status": "Wapproval",
-        "CRN": classItem["CRN"]
+        "CRN": classItem["CRN"],
+        "students":[]
     });
     localStorage.courses = JSON.stringify(courses);
     displayCourses(courses);
