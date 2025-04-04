@@ -5,6 +5,7 @@ if (Allstudents.length === 0)
 async function loadAllstudents() {
     const response2 = await fetch("/json/students.json");
     Allstudents = await response2.json();
+    localStorage.students = JSON.stringify(Allstudents);
 }
 let Cstudents = []
 let classes = localStorage.classes ? JSON.parse(localStorage.classes) : [];
@@ -13,9 +14,45 @@ if (classes.length === 0)
 async function loadclasses() {
     const response2 = await fetch("/json/classes.json");
     classes = await response2.json();
+    localStorage.classes = JSON.stringify(classes);
 }
+
 const table = document.querySelector("#maintable");
+
 info()
+
+const submit = document.querySelector(".submit");
+submit.addEventListener('click',handlesubmit);
+
+function handlesubmit(){
+   
+    let total = document.querySelector("#Total");
+    let row = document.querySelector("#alldata");
+    const grade =total.value;
+    const CCRN=Number(row.cells[2].textContent);
+    const SId = row.cells[1].textContent;
+  
+    
+    const storedData = localStorage.getItem('classes');
+let courses = JSON.parse(storedData) || [];
+
+
+courses = courses.map(course => {
+  if ( course.CRN === CCRN) { 
+    return {
+      ...course,
+      students: course.students.filter(student => student !== SId)
+    };
+  }
+  return course;
+});
+
+
+localStorage.setItem('classes', JSON.stringify(courses));
+
+
+}
+
 async function info() {
     const response2 = await fetch("/json/students.json");
     Allstudents = await response2.json();
@@ -32,7 +69,7 @@ function display(){
     table.innerHTML=' ';
     Cstudents.forEach(student=>{
         table.innerHTML+= `
-        <tr>
+        <tr id='alldata'>
                <td>${student.name}</td>
                <td>${student.id}</td>
                <td>${localStorage.currentCRN}</td>
