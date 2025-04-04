@@ -46,6 +46,7 @@ function handlesubmit(){
     return course;
     });
     localStorage.setItem('classes', JSON.stringify(courses));
+    location.reload();
     changeStudentData(grade,CCRN,SId)
 
 }
