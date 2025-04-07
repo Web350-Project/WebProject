@@ -132,6 +132,7 @@ function registerCourse(studentUsername, event) {
         if (!classItem.students.includes(studentUsername)) {
             classItem.students.push(studentUsername);
         }
+        console.log(classItem)
         student.courses = student.courses.filter(course => {
             return !(course.status === "pending" && course.CName === classItem.CName);
         });
@@ -144,7 +145,7 @@ function registerCourse(studentUsername, event) {
             grade: "N/A"
         });
 
-       
+        localStorage.classes = JSON.stringify(classes);
         localStorage.students = JSON.stringify(students);
 
         alert(`Successfully registered for ${classItem.CName} (${classItem.CNo}).`);

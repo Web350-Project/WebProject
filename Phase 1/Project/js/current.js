@@ -22,7 +22,7 @@ async function info() {
     
 }
 function findcurrentcourses(CRNS){
-    currentCourses = classes.filter(obj => CRNS.includes(obj.CRN));
+    currentCourses = classes.filter(obj => CRNS.includes(obj.CRN) && obj.status=== "In-progress");
     console.log(currentCourses)
     display(currentCourses);
 }
