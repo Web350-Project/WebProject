@@ -10,7 +10,7 @@
         "Campus": "Male",
         "Prereq": [],
         "Seats": "30/50",
-        "status": "In-progress",
+        "status": "pending",
         "CRN": 22527,
         "students":[]
     },
@@ -55,7 +55,7 @@
         "Campus": "Male",
         "Prereq": ["CMPS151"],
         "Seats": "40/50",
-        "status": "In-progress",
+        "status": "pending",
         "CRN": 22793,
         "students":[]
     },

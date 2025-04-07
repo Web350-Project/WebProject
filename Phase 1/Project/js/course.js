@@ -15,7 +15,7 @@ function displayClasses(classes) {
     const tableBody = document.querySelector("#courseList");
     tableBody.innerHTML = ""; 
     classes.forEach(classItem => {
-        if (classItem.status === "open") {
+        if (classItem.status === "pending") {
             tableBody.innerHTML += `
                 <div class="course-card" data-crn="${classItem.CRN}">
                     <div class="card-header">
@@ -96,7 +96,7 @@ function registerCourse(studentUsername, event) {
 
         const alreadyRegistered = student.courses.some(c => 
             c.CNo === classItem.CNo && 
-            (c.status === "in-progress" || c.status === "finished")
+            (c.status === "in-progress" || c.status === "finished"|| c.status === "pending")
         );
 
         if (alreadyRegistered) {
@@ -127,7 +127,7 @@ function registerCourse(studentUsername, event) {
         }
 
         classItem.Seats = `${available - 1}/${total}`;
-        
+        localStorage.classes = JSON.stringify(classes);
         // Add student to the class's students array if not already there
         if (!classItem.students.includes(studentUsername)) {
             classItem.students.push(studentUsername);
@@ -139,11 +139,12 @@ function registerCourse(studentUsername, event) {
             CName: classItem.CName,
             CNo: classItem.CNo,
             img: classItem.img,
-            status: "in-progress",
+            Section: classItem.Section,
+            status: "pending",
             grade: "N/A"
         });
 
-        localStorage.classes = JSON.stringify(classes);
+       
         localStorage.students = JSON.stringify(students);
 
         alert(`Successfully registered for ${classItem.CName} (${classItem.CNo}).`);

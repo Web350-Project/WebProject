@@ -1,27 +1,27 @@
-let courses = localStorage.courses ? JSON.parse(localStorage.courses) : [];
-if (courses.length === 0) loadCourses();
+let students = localStorage.students ? JSON.parse(localStorage.students) : [];
+
+if (students.length === 0) getStudents();
+let classes = localStorage.classes ? JSON.parse(localStorage.classes) : [];
+if (classes.length === 0) loadCourses();
 else {
-    displayCourses(courses);
+    displayCourses(classes);
 }
 const maincontent = document.querySelector("#main-content");
 
 loadCourseOptions();
 
 async function loadCourses() {
-    const response = await fetch("/json/courses.json");
-    let cData = await response.json();
     const response2 = await fetch("/json/classes.json");
     let classes = await response2.json();
-    courses = [cData, classes].flat();
-    localStorage.courses = JSON.stringify(courses);
-    displayCourses(courses);
+    localStorage.classes = JSON.stringify(classes);
+    displayCourses(classes);
 }
 
-function displayCourses(courses) {
+function displayCourses(classes) {
     const courseList = document.querySelector("#courseList");
     courseList.innerHTML = ""; 
     
-    courses.forEach(course => {
+    classes.forEach(course => {
         if (course.status === "In-progress") {
             courseList.innerHTML += `
                 <div class="course-card" data-cno="${course.CNo}" data-section="${course.Section}">
@@ -73,30 +73,51 @@ function searchCourses() {
     try {
         const query = document.querySelector("#search").value.toLowerCase();
         const filteredCourses = query === '' 
-            ? courses // Display all courses if query is empty
-            : courses.filter(course =>
-                course.CNo.toLowerCase().includes(query) ||
-                course.Category.toLowerCase().includes(query) ||
-                course.CName.toLowerCase().includes(query)
-            );
+        ? classes 
+        : classes.filter(course =>
+            course.CNo.toLowerCase().includes(query) ||
+            course.Category.toLowerCase().includes(query) ||
+            course.CName.toLowerCase().includes(query)
+        );
+    
         displayCourses(filteredCourses);
     } catch (error) {
         console.error("Error searching courses:", error);
     }
 }
+async function getStudents() {
+    const response = await fetch("/json/students.json");
+    students = await response.json();
+    localStorage.students = JSON.stringify(students);
+}
 
 function ValidateCourse(Cno, Section) {
-    const currentCourse = courses.find(e => (e.Section === Section && e.CNo === Cno));
+    const currentCourse = classes.find(e => (e.Section === Section && e.CNo === Cno));
     currentCourse.status = "In-progress";
-    localStorage.courses = JSON.stringify(courses);
-    displayCourses(courses);
+    students.forEach(student => {
+        console.log(student)
+        student.courses.forEach(course => {
+
+          if (course.Section === Section && course.CNo === Cno && course.status === "pending") {
+            course.status = "in-progress"; 
+          }
+        });
+      });
+    
+    // Update localStorage
+    localStorage.students = JSON.stringify(students);
+    localStorage.classes = JSON.stringify(classes);
+
+    // Refresh UI
+    displayCourses(classes);
+
 }
 
 function CancelCourse(Cno, Section) {
-    const currentCourseIndex = courses.findIndex(e => (e.Section === Section && e.CNo === Cno));
-    courses.splice(currentCourseIndex, 1);
-    localStorage.courses = JSON.stringify(courses);
-    displayCourses(courses);
+    const currentCourseIndex = classes.findIndex(e => (e.Section === Section && e.CNo === Cno));
+    classes.splice(currentCourseIndex, 1);
+    localStorage.classes = JSON.stringify(classes);
+    displayCourses(classes);
 }
 
 async function loadClassForm(pageUrl) {
