@@ -1,5 +1,4 @@
 let classes = localStorage.classes ? JSON.parse(localStorage.classes) : [];
-
 if (classes.length === 0)
     loadClasses();
 else
@@ -61,7 +60,6 @@ function searchCourses() {
         console.error("Error searching classes:", error);
     }
 }
-
 function registerCourse(studentUsername, event) {
     let students = localStorage.students ? JSON.parse(localStorage.students) : [];
     let classes = localStorage.classes ? JSON.parse(localStorage.classes) : [];
@@ -98,7 +96,7 @@ function registerCourse(studentUsername, event) {
 
         const alreadyRegistered = student.courses.some(c => 
             c.CNo === classItem.CNo && 
-            (c.status === "in-progress" || c.status === "finished" || c.status === "pending")
+            (c.status === "in-progress" || c.status === "finished")
         );
 
         if (alreadyRegistered) {
@@ -134,12 +132,14 @@ function registerCourse(studentUsername, event) {
         if (!classItem.students.includes(studentUsername)) {
             classItem.students.push(studentUsername);
         }
-        
+        student.courses = student.courses.filter(course => {
+            return !(course.status === "pending" && course.CName === classItem.CName);
+        });
         student.courses.push({
             CName: classItem.CName,
             CNo: classItem.CNo,
             img: classItem.img,
-            status: "pending",
+            status: "in-progress",
             grade: "N/A"
         });
 

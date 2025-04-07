@@ -34,8 +34,8 @@ function display(list) {
         <img src="${course.img} " alt="">   
       </div>     
           <div class="course-text">
-            <button id="course-name" onclick="directToGrade('${course.CRN}')">${course.CName}</button>
-            <p id="grade">${course.Section}</p>
+            <button id="course-button" onclick="directToGrade('${course.CRN}')">${course.CName}</button>
+            <p id="section">${course.Section}</p>
             </div>
         </div>
 

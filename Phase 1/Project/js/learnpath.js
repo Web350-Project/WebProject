@@ -8,7 +8,7 @@ const progress = document.querySelector('#in-progress');
 const finished = document.querySelector('#finished');
 const pending = document.querySelector('#pending');
 const coursebox = document.querySelector('#coursesbox');
-
+pendingCourses()
 progress.addEventListener("click", (e) => loadcourses(e, "in-progress"));
 finished.addEventListener("click", (e) => loadcourses(e, "finished"));
 pending.addEventListener("click", (e) => loadcourses(e, "pending"));
@@ -73,6 +73,58 @@ function display(list) {
         </div>`;
     });
 }
+async function pendingCourses() {
+    let Allstudents = localStorage.students ? JSON.parse(localStorage.students) : [];
+    let classes = localStorage.classes ? JSON.parse(localStorage.classes) : [];
+    if (Allstudents.length === 0) {
+        const response = await fetch("/json/students.json");
+        Allstudents = await response.json();
+        localStorage.students = JSON.stringify(Allstudents);
+    }
+    if (classes.length === 0) {
+        const response = await fetch("/json/classes.json");
+        classes = await response.json();
+        localStorage.classes = JSON.stringify(classes);
+    }
+    const student = Allstudents.find(s => s.username === localStorage.loggedStudent);
+    if (!student) {
+        alert("Logged-in student not found.");
+        return;
+    }
+    const openClasses = classes.filter(classItem => {
+        const [available] = classItem.Seats.split('/').map(Number);
+        return classItem.status === "open" && available > 0;
+    });
+
+    const finishedCourses = student.courses
+        .filter(e => e.status === "finished" && ["A", "B+", "B", "C+", "C", "D+", "D"].includes(e.grade))
+        .map(e => e.CNo);
+
+    const registeredCourses = student.courses.map(c => c.CNo);
+
+    const eligible = openClasses.filter(classItem => {
+        if (!classItem.Prereq || classItem.Prereq.length === 0) {
+            return !registeredCourses.includes(classItem.CNo);
+        }
+        return (
+            classItem.Prereq.every(pr => finishedCourses.includes(pr)) &&
+            !registeredCourses.includes(classItem.CNo)
+        );
+    });
+    eligible.forEach(e => {
+        student.courses.push({
+            CName: e.CName,
+            CNo: e.CNo,
+            img: e.img,
+            status: "pending",
+            grade: e.CRN
+        });
+    });
+
+    localStorage.students = JSON.stringify(Allstudents);
+}
+
+
 
 function searchCourses(e, filteredCourse) {
     e.preventDefault();

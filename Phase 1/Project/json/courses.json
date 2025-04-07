@@ -29,7 +29,7 @@
         "Category": "Databases",
         "CH": 3,
         "status": "open",
-        "Prereq": []
+        "Prereq": ["CMPS251"]
     },
     {
         "CName": "Operating System",

@@ -58,6 +58,7 @@ function changeStudentData(grade,CCRN,SId){
     const studentIdToUpdate = SId;
     const courseToUpdate =  findCno(CCRN) ; 
     const newGrade = numaricToLetter(grade); 
+    const newIMG = findimg(CCRN)
     const newStatus = "finished";
     console.log(studentIdToUpdate);
     console.log(courseToUpdate);
@@ -69,7 +70,7 @@ function changeStudentData(grade,CCRN,SId){
    
         const updatedCourses = student.courses.map(course => {
         if (course.CNo === courseToUpdate) {
-            return { ...course, grade: newGrade, status: newStatus };
+            return { ...course, grade: newGrade,img : newIMG, status: newStatus };
         }
         return course;
         });
@@ -94,7 +95,16 @@ function findCno(CCRN){
 
        
 }
+function findimg(CCRN){
 
+    for (const element of classes) {
+        if(CCRN === element.CRN){
+         return element.img;
+        }
+       }
+
+       
+}
 function numaricToLetter(grade){
 
     if (grade >= 90) return 'A';

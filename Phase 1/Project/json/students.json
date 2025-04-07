@@ -5,37 +5,6 @@
         "username": "aa2004",
         "GPA": "3.1",
         "courses": [
-            {
-                "CName": "Programming Concept",
-                "CNo": "CMPS151",
-                "img": "/html/imgs/concept.jpg",
-                "status": "in-progress",
-                "grade": "N/A"
-            }
-            ,
-            {
-                "CName": "Operating System",
-                "CNo": "CMPS405",
-                "img": "/html/imgs/OS.jpg",
-                "status": "in-progress",
-                "grade": "N/A"
-            }
-            ,
-            {
-                "CName": "Network I",
-                "CNo": "CMPE355",
-                "img": "/html/imgs/network.jpg",
-                "status": "pending",
-                "grade": "N/A"
-            }
-            ,
-            {
-                "CName": "SQL",
-                "CNo": "CMPS330",
-                "img": "/html/imgs/SQL.png",
-                "status": "finished",
-                "grade": "B"
-            }
         ]
 
     }
@@ -46,30 +15,6 @@
         "username": "ha2004",
         "GPA": "3.89",
         "courses": [
-            {
-                "CName": "Programming Concept",
-                "CNo": "CMPS151",
-                "img": "/html/imgs/concept.jpg",
-                "status": "in-progress",
-                "grade": "N/A"
-            }
-            ,
-            {
-                "CName": "Operating System",
-                "CNo": "CMPS405",
-                "img": "/html/imgs/OS.jpg",
-                "status": "finished",
-                "grade": "A"
-            }
-            ,
-            {
-                "CName": "Network I",
-                "CNo": "CMPE355",
-                "img": "/html/imgs/network.jpg",
-                "status": "finished",
-                "grade": "A"
-            }
-            
         ]
 
     }
@@ -80,37 +25,6 @@
         "username": "oa2003",
         "GPA": "3.91",
         "courses": [
-            {
-                "CName": "Programming Concept",
-                "CNo": "CMPS151",
-                "img": "/html/imgs/concept.jpg",
-                "status": "pending",
-                "grade": "N/A"
-            }
-            ,
-            {
-                "CName": "Operating System",
-                "CNo": "CMPS405",
-                "img": "/html/imgs/OS.jpg",
-                "status": "in-progress",
-                "grade": "N/A"
-            }
-            ,
-            {
-                "CName": "Network I",
-                "CNo": "CMPE355",
-                "img": "/html/imgs/network.jpg",
-                "status": "finished",
-                "grade": "A"
-            }
-            ,
-            {
-                "CName": "SQL",
-                "CNo": "CMPS330",
-                "img": "/html/imgs/SQL.png",
-                "status": "finished",
-                "grade": "A"
-            }
         ]
 
     }
