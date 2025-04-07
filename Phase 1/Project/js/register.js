@@ -22,7 +22,7 @@ function displayCourses(courses) {
     courseList.innerHTML = ""; 
     
     courses.forEach(course => {
-        if (course.status === "open") {
+        if (course.status === "In-progress") {
             courseList.innerHTML += `
                 <div class="course-card" data-cno="${course.CNo}" data-section="${course.Section}">
                     <div class="card-header">
@@ -37,7 +37,7 @@ function displayCourses(courses) {
                             <p><strong>Instructor:</strong> ${course.Instructor}</p>
                             <p><strong>Campus:</strong> ${course.Campus}</p>
                             <p><strong>Available Seats:</strong> ${course.Seats}</p>
-                            <p><strong>Status:</strong> <span class="status-open">Open</span></p>
+                            <p><strong>Status:</strong> <span class="status-open">In-progress</span></p>
                         </div>
                     </div>
                 </div>
@@ -87,7 +87,7 @@ function searchCourses() {
 
 function ValidateCourse(Cno, Section) {
     const currentCourse = courses.find(e => (e.Section === Section && e.CNo === Cno));
-    currentCourse.status = "open";
+    currentCourse.status = "In-progress";
     localStorage.courses = JSON.stringify(courses);
     displayCourses(courses);
 }
@@ -147,7 +147,7 @@ function handleClassSubmit(e) {
         "Campus": classItem["Campus"],
         "Prereq": courseItem.Prereq,
         "Seats": classItem["Seats"],
-        "status": "Wapproval",
+        "status": "pending",
         "CRN": classItem["CRN"],
         "students":[]
     });
@@ -169,7 +169,7 @@ function handleCourseSubmit(e) {
         "Campus": course["Campus"],
         "Prereq": course["Prereq"],
         "Seats": course["Seats"],
-        "status": "Wapproval",
+        "status": "pending",
         "CRN": course["CRN"]
     });
     localStorage.courses = JSON.stringify(courses);

@@ -10,7 +10,7 @@
         "Campus": "Male",
         "Prereq": [],
         "Seats": "30/50",
-        "status": "open",
+        "status": "In-progress",
         "CRN": 22527,
         "students":[]
     },
@@ -25,7 +25,7 @@
         "Campus": "Male",
         "Prereq": [],
         "Seats": "5/50",
-        "status": "open",
+        "status": "In-progress",
         "CRN": 21981,
         "students":[]
     },
@@ -40,7 +40,7 @@
         "Campus": "Female",
         "Prereq": [],
         "Seats": "50/50",
-        "status": "Wapproval",
+        "status": "pending",
         "CRN": 22520,
         "students":[]
     },
@@ -55,7 +55,7 @@
         "Campus": "Male",
         "Prereq": ["CMPS151"],
         "Seats": "40/50",
-        "status": "open",
+        "status": "In-progress",
         "CRN": 22793,
         "students":[]
     },
@@ -70,7 +70,7 @@
         "Campus": "Male",
         "Prereq": ["CMPS251"],
         "Seats": "45/50",
-        "status": "open",
+        "status": "In-progress",
         "CRN": 21058,
         "students":[]
     },
@@ -85,7 +85,7 @@
         "Campus": "Male",
         "Prereq": ["CMPS251"],
         "Seats": "20/50",
-        "status": "open",
+        "status": "In-progress",
         "CRN": 21269,
         "students":[]
     },
@@ -100,7 +100,7 @@
         "Campus": "Male",
         "Prereq": ["CMPS303", "CMPE263"],
         "Seats": "50/50",
-        "status": "Wapproval",
+        "status": "pending",
         "CRN": 22392,
         "students":[]
     },
@@ -115,7 +115,7 @@
         "Campus": "Male",
         "Prereq": ["CMPE263"],
         "Seats": "50/50",
-        "status": "Wapproval",
+        "status": "pending",
         "CRN": 21415,
         "students":[]
     }
@@ -131,7 +131,7 @@
         "Campus": "Male",
         "Prereq": [],
         "Seats": "10/50",
-        "status": "open",
+        "status": "In-progress",
         "CRN": 21499,
         "students":[]
     }
