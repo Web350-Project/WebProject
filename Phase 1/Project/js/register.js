@@ -12,7 +12,10 @@ loadCourseOptions();
 
 async function loadCourses() {
     const response2 = await fetch("/json/classes.json");
-    let classes = await response2.json();
+    let courses = await response2.json();
+    const response = await fetch("/json/courses.json");
+    let cData = await response.json();
+    classes = [cData, courses].flat();
     localStorage.classes = JSON.stringify(classes);
     displayCourses(classes);
 }
@@ -22,7 +25,44 @@ function displayCourses(classes) {
     courseList.innerHTML = ""; 
     
     classes.forEach(course => {
-        if (course.status === "In-progress") {
+        if(course.status === "In-progress" && course.CRN===undefined){
+            courseList.innerHTML += `
+                <div class="course-card" data-cno="${course.CNo}" data-section="${course.Section}">
+                    <div class="card-header">
+                        <h2 class="course-name">${course.CName}</h2>
+                        <span class="course-number">Course No: ${course.CNo}</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="details">
+                            <p><strong>Category:</strong> ${course.Category}</p>
+                            <p><strong>Credit Hours:</strong> ${course.CH}</p>
+                            <p><strong>Status:</strong> <span class="status-open">In-progress</span></p>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+        else if(course.status === "pending" && course.CRN===undefined){
+            courseList.innerHTML += `
+                <div class="course-card" data-cno="${course.CNo}" data-section="${course.Section}">
+                    <div class="card-header">
+                        <h2 class="course-name">${course.CName}</h2>
+                        <span class="course-number">Course No: ${course.CNo}</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="details">
+                            <p><strong>Category:</strong> ${course.Category}</p>
+                            <p><strong>Credit Hours:</strong> ${course.CH}</p>
+                            <div class="action-buttons">
+                                <input type="button" value="Validate" class="validate-btn" onclick="ValidateCourse('${course.CNo}','${course.Section}')">
+                                <input type="button" value="Cancel" class="cancel-btn" onclick="CancelCourse('${course.CNo}','${course.Section}')">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+        else if (course.status === "In-progress") {
             courseList.innerHTML += `
                 <div class="course-card" data-cno="${course.CNo}" data-section="${course.Section}">
                     <div class="card-header">
@@ -58,7 +98,7 @@ function displayCourses(classes) {
                             <p><strong>Campus:</strong> ${course.Campus}</p>
                             <p><strong>Available Seats:</strong> ${course.Seats}</p>
                             <div class="action-buttons">
-                                <input type="button" value="Validate" class="validate-btn" onclick="ValidateCourse('${course.CNo}','${course.Section}')">
+                                <input type="button" value="Validate" class="validate-btn" onclick="ValidateClass('${course.CNo}','${course.Section}')">
                                 <input type="button" value="Cancel" class="cancel-btn" onclick="CancelCourse('${course.CNo}','${course.Section}')">
                             </div>
                         </div>
@@ -91,8 +131,9 @@ async function getStudents() {
     localStorage.students = JSON.stringify(students);
 }
 
-function ValidateCourse(Cno, Section) {
+function ValidateClass(Cno, Section) {
     const currentCourse = classes.find(e => (e.Section === Section && e.CNo === Cno));
+    console.log(currentCourse)
     currentCourse.status = "In-progress";
     students.forEach(student => {
         console.log(student)
@@ -106,6 +147,19 @@ function ValidateCourse(Cno, Section) {
     
     // Update localStorage
     localStorage.students = JSON.stringify(students);
+    localStorage.classes = JSON.stringify(classes);
+
+    // Refresh UI
+    displayCourses(classes);
+
+}
+
+function ValidateCourse(Cno, Section) {
+    console.log(Cno);
+    console.log(Section);
+    const currentCourse = classes.find(e => (typeof e.Section === Section && e.CNo === Cno));
+    console.log(currentCourse)
+    currentCourse.status = "In-progress";
     localStorage.classes = JSON.stringify(classes);
 
     // Refresh UI
@@ -141,8 +195,8 @@ async function loadCourseForm(pageUrl) {
 }
 
 async function loadCourseOptions(element) {
-    const response = await fetch("/json/courses.json");
-    let cData = await response.json();
+    
+    let cData =classes.filter(course => course.CRN===undefined)
     const courseOptions = cData
         .map(course => `<option value="${course.CNo}">${course.CName}</option>`);
     element.innerHTML = courseOptions.join(' ');
@@ -152,12 +206,12 @@ function handleClassSubmit(e) {
     const data = new FormData(e.target);
     const classItem = Object.fromEntries(data);
     let courseItem= null;
-    for (const element of courses) {
+    for (const element of classes) {
        if(classItem["course"] === element.CNo){
         courseItem=element;
        }
       }
-    courses.push({
+      classes.push({
         "CName": courseItem.CName,
         "img": classItem["img"],
         "CNo": courseItem.CNo,
@@ -172,27 +226,22 @@ function handleClassSubmit(e) {
         "CRN": classItem["CRN"],
         "students":[]
     });
-    localStorage.courses = JSON.stringify(courses);
-    displayCourses(courses);
+    localStorage.classes = JSON.stringify(classes);
+    displayCourses(classes);
 }
 
 function handleCourseSubmit(e) {
     const data = new FormData(e.target);
     const course = Object.fromEntries(data);
-    courses.push({
+    classes.push({
         "CName": course["CName"],
-        "img": course["img"],
         "CNo": course["CNo"],
         "Category": course["Category"],
-        "Section": course["Section"],
         "CH": course["CH"],
-        "Instructor": course["Instructor"],
-        "Campus": course["Campus"],
         "Prereq": course["Prereq"],
-        "Seats": course["Seats"],
-        "status": "pending",
-        "CRN": course["CRN"]
+        "status": "pending"
+        
     });
-    localStorage.courses = JSON.stringify(courses);
-    displayCourses(courses);
+    localStorage.classes = JSON.stringify(classes);
+    displayCourses(classes);
 }
