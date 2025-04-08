@@ -6,6 +6,7 @@ if (classes.length === 0) loadCourses();
 else {
     displayCourses(classes);
 }
+
 const maincontent = document.querySelector("#main-content");
 
 loadCourseOptions();
@@ -25,7 +26,7 @@ function displayCourses(classes) {
     courseList.innerHTML = ""; 
     
     classes.forEach(course => {
-        if(course.status === "In-progress" && course.CRN===undefined){
+        if( course.status === undefined && course.CRN===undefined){
             courseList.innerHTML += `
                 <div class="course-card" type="course-extra" data-cno="${course.CNo}" data-section="${course.Section}">
                     <div class="card-header">
@@ -36,27 +37,6 @@ function displayCourses(classes) {
                         <div class="details">
                             <p><strong>Category:</strong> ${course.Category}</p>
                             <p><strong>Credit Hours:</strong> ${course.CH}</p>
-                            <p><strong>Status:</strong> <span class="status-open">In-progress</span></p>
-                        </div>
-                    </div>
-                </div>
-            `;
-        }
-        else if(course.status === "pending" && course.CRN===undefined){
-            courseList.innerHTML += `
-                <div class="course-card" type="course-extra" data-cno="${course.CNo}" data-section="${course.Section}">
-                    <div class="card-header">
-                        <h2 class="course-name">${course.CName}</h2>
-                        <span class="course-number">Course No: ${course.CNo}</span>
-                    </div>
-                    <div class="card-body">
-                        <div class="details">
-                            <p><strong>Category:</strong> ${course.Category}</p>
-                            <p><strong>Credit Hours:</strong> ${course.CH}</p>
-                            <div class="action-buttons">
-                                <input type="button" value="Validate" class="validate-btn" onclick="ValidateCourse('${course.CNo}','${course.Section}')">
-                                <input type="button" value="Cancel" class="cancel-btn" onclick="CancelCourse('${course.CNo}','${course.Section}')">
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -238,8 +218,8 @@ function handleCourseSubmit(e) {
         "CNo": course["CNo"],
         "Category": course["Category"],
         "CH": course["CH"],
-        "Prereq": course["Prereq"],
-        "status": "pending"
+        "Prereq": course["Prereq"]
+
         
     });
     localStorage.classes = JSON.stringify(classes);
