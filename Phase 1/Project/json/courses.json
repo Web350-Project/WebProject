@@ -4,6 +4,7 @@
         "CNo": "CMPS151",
         "Category": "Programming",
         "CH": 3,
+        "status": "In-progress",
         "Prereq": []
     },
     {
@@ -11,6 +12,7 @@
         "CNo": "CMPS251",
         "Category": "Programming",
         "CH": 4,
+        "status": "In-progress",
         "Prereq": ["CMPS151"]
     },
     {
@@ -18,6 +20,7 @@
         "CNo": "CMPS303",
         "Category": "Programming",
         "CH": 4,
+        "status": "In-progress",
         "Prereq": ["CMPS251"]
     },
     {
@@ -25,6 +28,7 @@
         "CNo": "CMPS330",
         "Category": "Databases",
         "CH": 3,
+        "status": "In-progress",
         "Prereq": ["CMPS251"]
     },
     {
@@ -32,6 +36,7 @@
         "CNo": "CMPS405",
         "Category": "Programming",
         "CH": 4,
+        "status": "In-progress",
         "Prereq": ["CMPS303", "CMPE263"]
     },
     {
@@ -39,6 +44,7 @@
         "CNo": "CMPE355",
         "Category": "Networking",
         "CH": 4,
+        "status": "In-progress",
         "Prereq": ["CMPE263"]
     }
 ]
