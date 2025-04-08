@@ -222,6 +222,9 @@ form input::placeholder {
     color: #04AA6D;
     font-weight: bold;
 }
+div[type=course-extra]{
+    border: solid 5px #8A1739;
+}
 
 @media screen and (max-width: 768px) {
     body {
@@ -279,7 +282,9 @@ form input::placeholder {
     #courseList {
         padding: 0 10px;
     }
-    
+    div[type=course-extra]{
+        border: solid 5px #8A1739;
+    }
     .course-card {
         padding: 15px;
     }

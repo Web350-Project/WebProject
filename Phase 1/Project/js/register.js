@@ -27,7 +27,7 @@ function displayCourses(classes) {
     classes.forEach(course => {
         if(course.status === "In-progress" && course.CRN===undefined){
             courseList.innerHTML += `
-                <div class="course-card" data-cno="${course.CNo}" data-section="${course.Section}">
+                <div class="course-card" type="course-extra" data-cno="${course.CNo}" data-section="${course.Section}">
                     <div class="card-header">
                         <h2 class="course-name">${course.CName}</h2>
                         <span class="course-number">Course No: ${course.CNo}</span>
@@ -44,7 +44,7 @@ function displayCourses(classes) {
         }
         else if(course.status === "pending" && course.CRN===undefined){
             courseList.innerHTML += `
-                <div class="course-card" data-cno="${course.CNo}" data-section="${course.Section}">
+                <div class="course-card" type="course-extra" data-cno="${course.CNo}" data-section="${course.Section}">
                     <div class="card-header">
                         <h2 class="course-name">${course.CName}</h2>
                         <span class="course-number">Course No: ${course.CNo}</span>
