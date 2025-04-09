@@ -78,7 +78,7 @@ function registerCourse(studentUsername, event) {
         processRegistration(event);
     }
 
-    function    processRegistration(event) {
+    function processRegistration(event) {
         const student = students.find(s => s.username === studentUsername);
         if (!student) {
             alert("Student information not found.");
@@ -91,6 +91,12 @@ function registerCourse(studentUsername, event) {
 
         if (!classItem) {
             alert("Course information not found.");
+            return;
+        }
+        const campusLower = classItem.Campus.toLowerCase();
+        if ((campusLower.includes('female') && student.gender === 'male') || 
+            (campusLower.includes('male') && student.gender === 'female')) {
+            alert("Invalid campus");
             return;
         }
 

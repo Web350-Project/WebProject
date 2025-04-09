@@ -3,29 +3,24 @@
         "name": "Ahmad",
         "id": "aa2004",
         "username": "aa2004",
+        "gender": "male",
         "GPA": "3.1",
-        "courses": [
-        ]
-
-    }
-    ,
+        "courses": []
+    },
     {
         "name": "Hatem",
         "id": "ha2004",
         "username": "ha2004",
+        "gender": "male",
         "GPA": "3.89",
-        "courses": [
-        ]
-
-    }
-    ,
+        "courses": []
+    },
     {
         "name": "Obada",
         "id": "oa2003",
         "username": "oa2003",
+        "gender": "male",
         "GPA": "3.91",
-        "courses": [
-        ]
-
+        "courses": []
     }
 ]

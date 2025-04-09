@@ -48,19 +48,108 @@ function display() {
             <td>${student.name}</td>
             <td>${student.id}</td>
             <td>${localStorage.currentCRN}</td>
-            <td><input type="number" name="Quizzes" class="Quizzes"></td>
-            <td><input type="number" name="HWs" class="HWs"></td>
-            <td><input type="number" name="Projet" class="Projet"></td>
-            <td><input type="number" name="Midterm_Exam" class="Midterm_Exam"></td>
-            <td><input type="number" name="Final_Exam" class="Final_Exam"></td>
-            <td><input type="number" name="Total" class="Total"></td>
-        </tr>
+            <td><input type="number" min="0" max="100" name="Quizzes" class="Quizzes grade"></td>
+            <td><input type="number" min="0" max="100" name="HWs" class="HWs grade"></td>
+            <td><input type="number" min="0" max="100" name="Projet" class="Projet grade"></td>
+            <td><input type="number" min="0" max="100" name="Midterm_Exam" class="Midterm_Exam grade"></td>
+            <td><input type="number" min="0" max="100" name="Final_Exam" class="Final_Exam grade"></td>
+            <td><input type="number" min="0" max="100" name="Total" class="Total" readonly></td>
+         </tr>
         `;
+    });
+    displayGrade();
+}
+
+
+function displayGrade(){
+    const rows = document.querySelectorAll('.student-row');
+    
+    rows.forEach(row => {
+        const gradeInputs = row.querySelectorAll('.grade');
+        
+        gradeInputs.forEach(input => {
+            input.addEventListener('input', () => {
+                // Validate input on entry
+                if (input.value !== '') {
+                    const value = parseFloat(input.value);
+                    if (value < 0) input.value = 0;
+                    if (value > 100) input.value = 100;
+                }
+                calculateGrade(row);
+            });
+        });
     });
 }
 
+function calculateGrade(row) {
+    const weights = {
+        'Quizzes': 0.15,
+        'HWs': 0.15,
+        'Projet': 0.20,
+        'Midterm_Exam': 0.20,
+        'Final_Exam': 0.30
+    };
+    
+    let total = 0;
+    let allFilled = true;
+    
+    for (const [component, weight] of Object.entries(weights)) {
+        const input = row.querySelector(`.${component}`);
+        if (input && input.value !== '') {
+            const value = parseFloat(input.value);
+            if (!isNaN(value)) {
+                total += value * weight;
+            } else {
+                allFilled = false;
+            }
+        } 
+        else {
+            allFilled = false;
+        }
+    }
+    
+    const totalInput = row.querySelector('.Total');
+    if (allFilled) {
+        totalInput.value = Math.round(total * 100) / 100;
+    } else {
+        totalInput.value = '';
+    }
+}
+
+function validateAllInputs() {
+    const inputs = document.querySelectorAll('.grade');
+    let isValid = true;
+    
+    inputs.forEach(input => {
+        if (input.value !== '') {
+            const value = parseFloat(input.value);
+            if (isNaN(value) || value < 0 || value > 100) {
+                isValid = false;
+            }
+        }
+    });
+    
+    return isValid;
+}
+
 function handleSubmit() {
+    if (!validateAllInputs()) {
+        alert("All grades must be between 0 and 100.");
+        return;
+    }
+    
     const rows = document.querySelectorAll(".student-row");
+    const currentCRN = Number(localStorage.currentCRN);
+
+    classes = classes.map(course => {
+        if (course.CRN === currentCRN) {
+            return {
+                ...course,
+                status: "finished" 
+            };
+        }
+        return course;
+    });
 
     rows.forEach(row => {
         const grade = Number(row.querySelector(".Total").value);
@@ -82,6 +171,7 @@ function handleSubmit() {
 
     localStorage.setItem("classes", JSON.stringify(classes));
     localStorage.setItem("students", JSON.stringify(Allstudents));
+    
     location.reload();
 }
 
