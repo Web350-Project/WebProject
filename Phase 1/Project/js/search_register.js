@@ -62,18 +62,12 @@ function searchCourses() {
 }
 function registerCourse(studentUsername, event) {
     let students = localStorage.students ? JSON.parse(localStorage.students) : [];
-    let classes = localStorage.classes ? JSON.parse(localStorage.classes) : [];
 
     async function getStudent() {
         if (students.length === 0) {
             const response = await fetch("/json/students.json");
             students = await response.json();
             localStorage.students = JSON.stringify(students);
-        }
-        if (classes.length === 0) {
-            const response = await fetch("/json/classes.json");
-            classes = await response.json();
-            localStorage.classes = JSON.stringify(classes);
         }
         processRegistration(event);
     }
@@ -133,12 +127,9 @@ function registerCourse(studentUsername, event) {
         }
 
         classItem.Seats = `${available - 1}/${total}`;
-        localStorage.classes = JSON.stringify(classes);
-        // Add student to the class's students array if not already there
         if (!classItem.students.includes(studentUsername)) {
             classItem.students.push(studentUsername);
         }
-        console.log(classItem)
         student.courses = student.courses.filter(course => {
             return !(course.status === "pending" && course.CName === classItem.CName);
         });
@@ -158,7 +149,7 @@ function registerCourse(studentUsername, event) {
         displayClasses(classes);
     }
 
-    if (students.length === 0 || classes.length === 0) {
+    if (students.length === 0) {
         getStudent();
     } else {
         processRegistration(event);
