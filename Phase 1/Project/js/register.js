@@ -1,30 +1,59 @@
 let students = localStorage.students ? JSON.parse(localStorage.students) : [];
 
 if (students.length === 0) getStudents();
+
 let classes = localStorage.classes ? JSON.parse(localStorage.classes) : [];
-if (classes.length === 0) loadCourses();
-else {
-    displayCourses(classes);
+let courses = localStorage.courses ? JSON.parse(localStorage.courses) : [];
+
+    if (classes.length === 0) {
+        
+        if (courses.length === 0){
+            loadCourses();
+            
+            
 }
+        
+
+    }else{
+        if (courses.length === 0){
+            loadClasses()
+        }
+
+        displayCourses(courses);
+    }
+
+
+
+
+
+    
 const maincontent = document.querySelector("#main-content");
 
 loadCourseOptions();
-
-async function loadCourses() {
-    const response2 = await fetch("/json/classes.json");
-    let courses = await response2.json();
+async function loadClasses() {
     const response = await fetch("/json/courses.json");
     let cData = await response.json();
-    classes = [cData, courses].flat();
+    courses = [cData, classes].flat();
+    localStorage.courses = JSON.stringify(courses);
     localStorage.classes = JSON.stringify(classes);
-    displayCourses(classes);
+    displayCourses(courses);
+}
+async function loadCourses() {
+    const response = await fetch("/json/courses.json");
+    let cData = await response.json();
+    const response2 = await fetch("/json/classes.json");
+    classes = await response2.json();
+    courses = [cData, classes].flat();
+    localStorage.courses = JSON.stringify(courses);
+    localStorage.classes = JSON.stringify(classes);
+    displayCourses(courses);
 }
 
-function displayCourses(classes) {
+function displayCourses(courses) {
     const courseList = document.querySelector("#courseList");
     courseList.innerHTML = ""; 
     
-    classes.forEach(course => {
+    courses.forEach(course => {
         if(course.status === "In-progress" && course.CRN===undefined){
             courseList.innerHTML += `
                 <div class="course-card" type="course-extra" data-cno="${course.CNo}" data-section="${course.Section}">
@@ -113,8 +142,8 @@ function searchCourses() {
     try {
         const query = document.querySelector("#search").value.toLowerCase();
         const filteredCourses = query === '' 
-        ? classes 
-        : classes.filter(course =>
+        ? courses 
+        : courses.filter(course =>
             course.CNo.toLowerCase().includes(query) ||
             course.Category.toLowerCase().includes(query) ||
             course.CName.toLowerCase().includes(query)
@@ -132,9 +161,11 @@ async function getStudents() {
 }
 
 function ValidateClass(Cno, Section) {
-    const currentCourse = classes.find(e => (e.Section === Section && e.CNo === Cno));
+    const currentCourse = courses.find(e => (e.Section === Section && e.CNo === Cno));
+    const currentCourse2 = classes.find(e => (e.Section === Section && e.CNo === Cno));
     console.log(currentCourse)
     currentCourse.status = "In-progress";
+    currentCourse2.status = "In-progress";
     students.forEach(student => {
         console.log(student)
         student.courses.forEach(course => {
@@ -147,31 +178,35 @@ function ValidateClass(Cno, Section) {
     
     // Update localStorage
     localStorage.students = JSON.stringify(students);
+    localStorage.courses = JSON.stringify(courses);
     localStorage.classes = JSON.stringify(classes);
 
     // Refresh UI
-    displayCourses(classes);
+    displayCourses(courses);
 
 }
 
 function ValidateCourse(Cno, Section) {
     console.log(Cno);
     console.log(Section);
-    const currentCourse = classes.find(e => (typeof e.Section === Section && e.CNo === Cno));
+    const currentCourse = courses.find(e => (typeof e.Section === Section && e.CNo === Cno));
     console.log(currentCourse)
     currentCourse.status = "In-progress";
-    localStorage.classes = JSON.stringify(classes);
+    localStorage.courses = JSON.stringify(courses);
 
     // Refresh UI
-    displayCourses(classes);
+    displayCourses(courses);
 
 }
 
 function CancelCourse(Cno, Section) {
-    const currentCourseIndex = classes.findIndex(e => (e.Section === Section && e.CNo === Cno));
-    classes.splice(currentCourseIndex, 1);
+    const currentCourseIndex = courses.findIndex(e => (e.Section === Section && e.CNo === Cno));
+    const currentCourseIndex2 = classes.findIndex(e => (e.Section === Section && e.CNo === Cno));
+    courses.splice(currentCourseIndex, 1);
+    classes.splice(currentCourseIndex2,1);
+    localStorage.courses = JSON.stringify(courses);
     localStorage.classes = JSON.stringify(classes);
-    displayCourses(classes);
+    displayCourses(courses);
 }
 
 async function loadClassForm(pageUrl) {
@@ -196,7 +231,7 @@ async function loadCourseForm(pageUrl) {
 
 async function loadCourseOptions(element) {
     
-    let cData =classes.filter(course => course.CRN===undefined)
+    let cData =courses.filter(course => course.CRN===undefined)
     const courseOptions = cData
         .map(course => `<option value="${course.CNo}">${course.CName}</option>`);
     element.innerHTML = courseOptions.join(' ');
@@ -206,12 +241,12 @@ function handleClassSubmit(e) {
     const data = new FormData(e.target);
     const classItem = Object.fromEntries(data);
     let courseItem= null;
-    for (const element of classes) {
+    for (const element of courses) {
        if(classItem["course"] === element.CNo){
         courseItem=element;
        }
       }
-      classes.push({
+      courses.push({
         "CName": courseItem.CName,
         "img": classItem["img"],
         "CNo": courseItem.CNo,
@@ -226,14 +261,30 @@ function handleClassSubmit(e) {
         "CRN": classItem["CRN"],
         "students":[]
     });
+    classes.push({
+        "CName": courseItem.CName,
+        "img": classItem["img"],
+        "CNo": courseItem.CNo,
+        "Category":courseItem.Category,
+        "Section": classItem["Section"],
+        "CH": courseItem.CH,
+        "Instructor": classItem["Instructor"],
+        "Campus": classItem["Campus"],
+        "Prereq": courseItem.Prereq,
+        "Seats": classItem["Seats"],
+        "status": "pending",
+        "CRN": classItem["CRN"],
+        "students":[]
+    });
+    localStorage.courses = JSON.stringify(courses);
     localStorage.classes = JSON.stringify(classes);
-    displayCourses(classes);
+    displayCourses(courses);
 }
 
 function handleCourseSubmit(e) {
     const data = new FormData(e.target);
     const course = Object.fromEntries(data);
-    classes.push({
+    courses.push({
         "CName": course["CName"],
         "CNo": course["CNo"],
         "Category": course["Category"],
@@ -242,6 +293,6 @@ function handleCourseSubmit(e) {
         "status": "pending"
         
     });
-    localStorage.classes = JSON.stringify(classes);
-    displayCourses(classes);
+    localStorage.courses = JSON.stringify(courses);
+    displayCourses(courses);
 }
