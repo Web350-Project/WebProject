@@ -96,7 +96,7 @@ function registerCourse(studentUsername, event) {
         const campusLower = classItem.Campus.toLowerCase();
         if ((campusLower.includes('female') && student.gender === 'male') || 
             (campusLower.includes('male') && student.gender === 'female')) {
-            alert("Invalid campus");
+            alert("You have choosen the wrong campus.");
             return;
         }
 
