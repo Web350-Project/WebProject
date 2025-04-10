@@ -114,7 +114,7 @@
         "Instructor": "Ali",
         "Campus": "Male",
         "Prereq": ["CMPE263"],
-        "Seats": "50/50",
+        "Seats": "00/50",
         "status": "pending",
         "CRN": 21415,
         "students":[]
