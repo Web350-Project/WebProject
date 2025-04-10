@@ -199,14 +199,19 @@ function ValidateCourse(Cno, Section) {
 }
 
 function CancelCourse(Cno, Section) {
-    const currentCourseIndex = courses.findIndex(e => (e.Section === Section && e.CNo === Cno));
-    const currentCourseIndex2 = classes.findIndex(e => (e.Section === Section && e.CNo === Cno));
-    courses.splice(currentCourseIndex, 1);
-    classes.splice(currentCourseIndex2,1);
-    localStorage.courses = JSON.stringify(courses);
-    localStorage.classes = JSON.stringify(classes);
-    displayCourses(courses);
-}
+    let currentCourseIndex = courses.findIndex(e => (e.Section === Section && e.CNo === Cno));
+      if( Section !== "undefined"){
+      const currentCourseIndex2 = classes.findIndex(e => (e.Section === Section && e.CNo === Cno));
+      classes.splice(currentCourseIndex2,1);
+      }else{
+          currentCourseIndex = courses.findIndex(e => (e.Section === undefined && e.CNo === Cno));
+      }
+      console.log(currentCourseIndex);
+      courses.splice(currentCourseIndex, 1);
+      localStorage.courses = JSON.stringify(courses);
+      localStorage.classes = JSON.stringify(classes);
+      displayCourses(courses);
+  }
 
 async function loadClassForm(pageUrl) {
     const page = await fetch(pageUrl);
