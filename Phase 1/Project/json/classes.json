@@ -119,20 +119,4 @@
         "CRN": 21415,
         "students":[]
     }
-    ,
-    {
-        "CName": "Discrete",
-        "img": "/html/imgs/disc.png",
-        "CNo": "CMPS205",
-        "Category": "Programming",
-        "Section": "L01",
-        "CH": 3,
-        "Instructor": "xyz",
-        "Campus": "Male",
-        "Prereq": [],
-        "Seats": "10/50",
-        "status": "In-progress",
-        "CRN": 21499,
-        "students":[]
-    }
 ]

@@ -5,29 +5,28 @@ if (students.length === 0) getStudents();
 let classes = localStorage.classes ? JSON.parse(localStorage.classes) : [];
 let courses = localStorage.courses ? JSON.parse(localStorage.courses) : [];
 
-    if (classes.length === 0) {
-        
-        if (courses.length === 0){
-            loadCourses();
-            
-            
-}
-        
-
-    }else{
-        if (courses.length === 0){
-            loadClasses()
-        }
-
-        displayCourses(courses);
+if (classes.length === 0) {
+    if (courses.length === 0){
+        loadCourses();       
     }
+} else {
+    if (courses.length === 0){
+        loadClasses()
+    }
+    displayCourses(courses);
+}
 
-
-
-
-
-    
 const maincontent = document.querySelector("#main-content");
+
+function showOnlyCourses() {
+    const filteredCourses = courses.filter(course => course.CRN === undefined);
+    displayCourses(filteredCourses);
+}
+
+function showOnlyClasses() {
+    const filteredClasses = courses.filter(course => course.CRN !== undefined);
+    displayCourses(filteredClasses);
+}
 
 loadCourseOptions();
 async function loadClasses() {

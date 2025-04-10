@@ -46,5 +46,13 @@
         "CH": 4,
         "status": "In-progress",
         "Prereq": ["CMPE263"]
+    },
+    {
+        "CName": "Software Engineering",
+        "CNo": "CMPS310",
+        "Category": "Programming",
+        "CH": 4,
+        "status": "pending",
+        "Prereq": ["CMPS251"]
     }
 ]
