@@ -48,7 +48,10 @@ async function loadClasses(type) {
 function displayCourses(courses) {
     const courseList = document.querySelector("#courseList");
     courseList.innerHTML = ""; 
-    const courseB=` <div class="course-card" type="course-extra" data-cno="${course.CNo}" data-section="${course.Section}">
+    
+
+    courses.forEach(course => {
+        const courseB=` <div class="course-card" type="course-extra" data-cno="${course.CNo}" data-section="${course.Section}">
                     <div class="card-header">
                         <h2 class="course-name">${course.CName}</h2>
                         <span class="course-number">Course No: ${course.CNo}</span>
@@ -71,8 +74,6 @@ function displayCourses(courses) {
                             <p><strong>Instructor:</strong> ${course.Instructor}</p>
                             <p><strong>Campus:</strong> ${course.Campus}</p>
                             <p><strong>Available Seats:</strong> ${course.Seats}</p>`;
-
-    courses.forEach(course => {
         if(course.status === "In-progress" && course.CRN===undefined){
             courseList.innerHTML += courseB+`
                             <p><strong>Status:</strong> <span class="status-open">In-progress</span></p>
