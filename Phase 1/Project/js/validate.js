@@ -7,11 +7,13 @@ let courses = localStorage.courses ? JSON.parse(localStorage.courses) : [];
 
 if (classes.length === 0) {
     if (courses.length === 0){
-        loadCourses();       
+        loadClasses(1);       
     }
-} else {
+}
+else {
     if (courses.length === 0){
-        loadClasses()
+        loadClasses(0);
+        
     }
     displayCourses(courses);
 }
@@ -29,33 +31,24 @@ function showOnlyClasses() {
 }
 
 loadCourseOptions();
-async function loadClasses() {
+
+async function loadClasses(type) {
     const response = await fetch("/json/courses.json");
     let cData = await response.json();
-    courses = [cData, classes].flat();
-    localStorage.courses = JSON.stringify(courses);
-    localStorage.classes = JSON.stringify(classes);
-    displayCourses(courses);
-}
-async function loadCourses() {
-    const response = await fetch("/json/courses.json");
-    let cData = await response.json();
+    if(type===1){
     const response2 = await fetch("/json/classes.json");
     classes = await response2.json();
+    localStorage.classes = JSON.stringify(classes);
+    }
     courses = [cData, classes].flat();
     localStorage.courses = JSON.stringify(courses);
-    localStorage.classes = JSON.stringify(classes);
     displayCourses(courses);
 }
 
 function displayCourses(courses) {
     const courseList = document.querySelector("#courseList");
     courseList.innerHTML = ""; 
-    
-    courses.forEach(course => {
-        if(course.status === "In-progress" && course.CRN===undefined){
-            courseList.innerHTML += `
-                <div class="course-card" type="course-extra" data-cno="${course.CNo}" data-section="${course.Section}">
+    const courseB=` <div class="course-card" type="course-extra" data-cno="${course.CNo}" data-section="${course.Section}">
                     <div class="card-header">
                         <h2 class="course-name">${course.CName}</h2>
                         <span class="course-number">Course No: ${course.CNo}</span>
@@ -63,7 +56,25 @@ function displayCourses(courses) {
                     <div class="card-body">
                         <div class="details">
                             <p><strong>Category:</strong> ${course.Category}</p>
+                            <p><strong>Credit Hours:</strong> ${course.CH}</p>`;
+
+    const classB=`  <div class="course-card" data-cno="${course.CNo}" data-section="${course.Section}">
+                    <div class="card-header">
+                        <h2 class="course-name">${course.CName}</h2>
+                        <span class="course-number">Course No: ${course.CNo}</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="details">
+                            <p><strong>Category:</strong> ${course.Category}</p>
+                            <p><strong>Section:</strong> ${course.Section}</p>
                             <p><strong>Credit Hours:</strong> ${course.CH}</p>
+                            <p><strong>Instructor:</strong> ${course.Instructor}</p>
+                            <p><strong>Campus:</strong> ${course.Campus}</p>
+                            <p><strong>Available Seats:</strong> ${course.Seats}</p>`;
+
+    courses.forEach(course => {
+        if(course.status === "In-progress" && course.CRN===undefined){
+            courseList.innerHTML += courseB+`
                             <p><strong>Status:</strong> <span class="status-open">In-progress</span></p>
                         </div>
                     </div>
@@ -71,16 +82,7 @@ function displayCourses(courses) {
             `;
         }
         else if(course.status === "pending" && course.CRN===undefined){
-            courseList.innerHTML += `
-                <div class="course-card" type="course-extra"  data-cno="${course.CNo}" data-section="${course.Section}">
-                    <div class="card-header">
-                        <h2 class="course-name">${course.CName}</h2>
-                        <span class="course-number">Course No: ${course.CNo}</span>
-                    </div>
-                    <div class="card-body">
-                        <div class="details">
-                            <p><strong>Category:</strong> ${course.Category}</p>
-                            <p><strong>Credit Hours:</strong> ${course.CH}</p>
+            courseList.innerHTML += courseB+`
                             <div class="action-buttons">
                                 <input type="button" value="Validate" class="validate-btn" onclick="ValidateCourse('${course.CNo}','${course.Section}')">
                                 <input type="button" value="Cancel" class="cancel-btn" onclick="CancelCourse('${course.CNo}','${course.Section}')">
@@ -91,40 +93,14 @@ function displayCourses(courses) {
             `;
         }
         else if (course.status === "In-progress") {
-            courseList.innerHTML += `
-                <div class="course-card" data-cno="${course.CNo}" data-section="${course.Section}">
-                    <div class="card-header">
-                        <h2 class="course-name">${course.CName}</h2>
-                        <span class="course-number">Course No: ${course.CNo}</span>
-                    </div>
-                    <div class="card-body">
-                        <div class="details">
-                            <p><strong>Category:</strong> ${course.Category}</p>
-                            <p><strong>Section:</strong> ${course.Section}</p>
-                            <p><strong>Credit Hours:</strong> ${course.CH}</p>
-                            <p><strong>Instructor:</strong> ${course.Instructor}</p>
-                            <p><strong>Campus:</strong> ${course.Campus}</p>
-                            <p><strong>Available Seats:</strong> ${course.Seats}</p>
+            courseList.innerHTML += classB+`
                             <p><strong>Status:</strong> <span class="status-open">In-progress</span></p>
                         </div>
                     </div>
                 </div>
             `;
         } else {
-            courseList.innerHTML += `
-                <div class="course-card" data-cno="${course.CNo}" data-section="${course.Section}">
-                    <div class="card-header">
-                        <h2 class="course-name">${course.CName}</h2>
-                        <span class="course-number">Course No: ${course.CNo}</span>
-                    </div>
-                    <div class="card-body">
-                        <div class="details">
-                            <p><strong>Category:</strong> ${course.Category}</p>
-                            <p><strong>Section:</strong> ${course.Section}</p>
-                            <p><strong>Credit Hours:</strong> ${course.CH}</p>
-                            <p><strong>Instructor:</strong> ${course.Instructor}</p>
-                            <p><strong>Campus:</strong> ${course.Campus}</p>
-                            <p><strong>Available Seats:</strong> ${course.Seats}</p>
+            courseList.innerHTML += classB+`
                             <div class="action-buttons">
                                 <input type="button" value="Validate" class="validate-btn" onclick="ValidateClass('${course.CNo}','${course.Section}')">
                                 <input type="button" value="Cancel" class="cancel-btn" onclick="CancelCourse('${course.CNo}','${course.Section}')">
