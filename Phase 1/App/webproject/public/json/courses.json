@@ -1,0 +1,123 @@
+[
+    {
+      "CName": "Programming Concepts",
+      "CNo": "CMPS151",
+      "Category": "Programming",
+      "CH": 3,
+      "status": "In-progress",
+      "Prereq": []
+    },
+    {
+      "CName": "Object Oriented Programming",
+      "CNo": "CMPS251",
+      "Category": "Programming",
+      "CH": 4,
+      "status": "In-progress",
+      "Prereq": ["CMPS151"]
+    },
+    {
+      "CName": "Data Structures",
+      "CNo": "CMPS303",
+      "Category": "Programming",
+      "CH": 4,
+      "status": "In-progress",
+      "Prereq": ["CMPS251"]
+    },
+    {
+      "CName": "Discrete Structures",
+      "CNo": "CMPS205",
+      "Category": "Math",
+      "CH": 3,
+      "status": "pending",
+      "Prereq": []
+    },
+    {
+      "CName": "Computer Ethics",
+      "CNo": "CMPS200",
+      "Category": "Ethics",
+      "CH": 1,
+      "status": "pending",
+      "Prereq": []
+    },
+    {
+      "CName": "Design & Analysis of Algorithms",
+      "CNo": "CMPS323",
+      "Category": "Algorithms",
+      "CH": 3,
+      "status": "pending",
+      "Prereq": ["CMPS303", "CMPS205"]
+    },
+    {
+      "CName": "Fundamentals of Database",
+      "CNo": "CMPS351",
+      "Category": "Databases",
+      "CH": 4,
+      "status": "pending",
+      "Prereq": ["CMPS251"]
+    },
+    {
+      "CName": "Computer Architecture & Organization I",
+      "CNo": "CMPE263",
+      "Category": "Hardware",
+      "CH": 3,
+      "status": "pending",
+      "Prereq": ["CMPS205", "CMPS251"]
+    },
+    {
+      "CName": "Software Engineering",
+      "CNo": "CMPS310",
+      "Category": "Engineering",
+      "CH": 4,
+      "status": "pending",
+      "Prereq": ["CMPS251"]
+    },
+    {
+      "CName": "Data Communication & Networks I",
+      "CNo": "CMPE355",
+      "Category": "Networking",
+      "CH": 4,
+      "status": "pending",
+      "Prereq": ["CMPE263"]
+    },
+    {
+      "CName": "Cybersecurity Fundamentals",
+      "CNo": "CMPS380",
+      "Category": "Security",
+      "CH": 3,
+      "status": "pending",
+      "Prereq": ["CMPS303"]
+    },
+    {
+      "CName": "Operating Systems",
+      "CNo": "CMPS405",
+      "Category": "Systems",
+      "CH": 4,
+      "status": "pending",
+      "Prereq": ["CMPS303", "CMPE263"]
+    },
+    {
+      "CName": "Web Development Fundamentals",
+      "CNo": "CMPS350",
+      "Category": "Web",
+      "CH": 3,
+      "status": "pending",
+      "Prereq": ["CMPS251"]
+    },
+    {
+      "CName": "Senior Project I",
+      "CNo": "CMPS493",
+      "Category": "Capstone",
+      "CH": 3,
+      "status": "pending",
+      "Prereq": ["CMPS310", "CMPS405"]
+    },
+    {
+      "CName": "Senior Project II",
+      "CNo": "CMPS499",
+      "Category": "Capstone",
+      "CH": 3,
+      "status": "pending",
+      "Prereq": ["CMPS493"]
+    }
+  ]
+  

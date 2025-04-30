@@ -1,0 +1,82 @@
+[
+    {
+        "name": "Ahmad",
+        "id": "aa2004",
+        "username": "aa2004",
+        "gender": "male",
+        "GPA": "3.1",
+        "courses": []
+    },
+    {
+        "name": "Hatem",
+        "id": "ha2004",
+        "username": "ha2004",
+        "gender": "male",
+        "GPA": "3.89",
+        "courses": []
+    },
+    {
+        "name": "Obada",
+        "id": "oa2003",
+        "username": "oa2003",
+        "gender": "male",
+        "GPA": "3.91",
+        "courses": []
+    },
+    {
+        "name": "Fatima",
+        "id": "fa2002",
+        "username": "fa2002",
+        "gender": "female",
+        "GPA": "3.75",
+        "courses": []
+    },
+    {
+        "name": "Sara",
+        "id": "sa2001",
+        "username": "sa2001",
+        "gender": "female",
+        "GPA": "3.60",
+        "courses": []
+    },
+    {
+        "name": "Yousef",
+        "id": "yu2004",
+        "username": "yu2004",
+        "gender": "male",
+        "GPA": "2.98",
+        "courses": []
+    },
+    {
+        "name": "Layla",
+        "id": "la2003",
+        "username": "la2003",
+        "gender": "female",
+        "GPA": "3.82",
+        "courses": []
+    },
+    {
+        "name": "Omar",
+        "id": "om2002",
+        "username": "om2002",
+        "gender": "male",
+        "GPA": "3.20",
+        "courses": []
+    },
+    {
+        "name": "Noura",
+        "id": "no2004",
+        "username": "no2004",
+        "gender": "female",
+        "GPA": "3.45",
+        "courses": []
+    },
+    {
+        "name": "Zaid",
+        "id": "za2005",
+        "username": "za2005",
+        "gender": "male",
+        "GPA": "3.00",
+        "courses": []
+    }
+]

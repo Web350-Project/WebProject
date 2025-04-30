@@ -1,0 +1,97 @@
+[
+    {
+        "username": "aa2004",
+        "password": "123",
+        "type": "student"
+    },
+    {
+        "username": "ha2004",
+        "password": "123",
+        "type": "student"
+    },
+    {
+        "username": "oa2003",
+        "password": "123",
+        "type": "student"
+    },
+    {
+        "username": "fa2002",
+        "password": "123",
+        "type": "student"
+    },
+    {
+        "username": "sa2001",
+        "password": "123",
+        "type": "student"
+    },
+    {
+        "username": "yu2004",
+        "password": "123",
+        "type": "student"
+    },
+    {
+        "username": "la2003",
+        "password": "123",
+        "type": "student"
+    },
+    {
+        "username": "om2002",
+        "password": "123",
+        "type": "student"
+    },
+    {
+        "username": "no2004",
+        "password": "123",
+        "type": "student"
+    },
+    {
+        "username": "za2005",
+        "password": "123",
+        "type": "student"
+    },
+    {
+        "username": "profAli",
+        "password": "123",
+        "type": "instructor"
+    },
+    {
+        "username": "profOmar",
+        "password": "123",
+        "type": "instructor"
+    },
+    {
+        "username": "profRami",
+        "password": "123",
+        "type": "instructor"
+    },
+    {
+        "username": "profLayla",
+        "password": "123",
+        "type": "instructor"
+    },
+    {
+        "username": "profSalim",
+        "password": "123",
+        "type": "instructor"
+    },
+    {
+        "username": "profNoora",
+        "password": "123",
+        "type": "instructor"
+    },
+    {
+        "username": "profFatima",
+        "password": "123",
+        "type": "instructor"
+    },
+    {
+        "username": "profYousef",
+        "password": "123",
+        "type": "instructor"
+    },
+    {
+        "username": "admin1",
+        "password": "123",
+        "type": "admin"
+    }
+]

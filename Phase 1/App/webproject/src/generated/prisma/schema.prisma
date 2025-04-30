@@ -1,0 +1,96 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Usernames {
+  username    String        @id
+  password    String        @unique
+  type        String        @unique
+  students    students[]
+  instructors instructors[]
+}
+
+enum Campus {
+  Male
+  Female
+}
+
+enum status {
+  inprogress
+  pending
+}
+
+enum Gender {
+  male
+  female
+}
+
+model students {
+  name     String
+  id       String    @id
+  username String    @unique
+  gender   Gender
+  GPA      Float
+  user     Usernames @relation(fields: [username], references: [username])
+
+  //courses
+}
+
+model courses {
+  CName                   String
+  CNo                     String           @id
+  Category                String
+  CH                      Int
+  status                  status
+  //Prereq
+  instructors             instructors?     @relation(fields: [instructorsUsername], references: [username])
+  instructorsUsername     String?
+  enrolledCourses         enrolledCourses? @relation(fields: [enrolledCoursesUsername, enrolledCoursesCRN], references: [username, CRN])
+  enrolledCoursesUsername String?
+  enrolledCoursesCRN      Int?
+}
+
+model classes {
+  CName    String
+  img      String
+  CNo      String
+  Category String
+  Section  String
+  CH       Int
+  status   status
+  //Instructor
+  Campus   Campus
+  //Prereq
+  Seats    String
+  CRN      Int    @id
+
+  //students
+  @@unique([Section, CNo])
+}
+
+model instructors {
+  name      String
+  username  String    @id
+  expertise String
+  user      Usernames @relation(fields: [username], references: [username])
+  CRNs      courses[]
+  //CRNS
+}
+
+model enrolledCourses {
+  username String    @unique
+  CRN      Int       @unique
+  course   courses[]
+  Grade    String
+
+  @@id([username, CRN])
+}
