@@ -6,13 +6,11 @@
         "Category": "Programming",
         "Section": "L01",
         "CH": 3,
-        "Instructor": "Omar",
+        "instructorUsername": "profOmar",
         "Campus": "Male",
-        "Prereq": [],
         "Seats": "30/50",
         "status": "pending",
-        "CRN": 22527,
-        "students":[]
+        "CRN": 22527
     },
     {
         "CName": "Programming Concept",
@@ -21,13 +19,11 @@
         "Category": "Programming",
         "Section": "L02",
         "CH": 3,
-        "Instructor": "Omar",
+        "instructorUsername": "profOmar",
         "Campus": "Male",
-        "Prereq": [],
         "Seats": "5/50",
-        "status": "In-progress",
-        "CRN": 21981,
-        "students":[]
+        "status": "inprogress",
+        "CRN": 21981
     },
     {
         "CName": "Programming Concept",
@@ -36,13 +32,11 @@
         "Category": "Programming",
         "Section": "L51",
         "CH": 3,
-        "Instructor": "Omar",
+        "instructorUsername": "profOmar",
         "Campus": "Female",
-        "Prereq": [],
         "Seats": "50/50",
         "status": "pending",
-        "CRN": 22520,
-        "students":[]
+        "CRN": 22520
     },
     {
         "CName": "Object-Oriented Programming",
@@ -51,13 +45,11 @@
         "Category": "Programming",
         "Section": "L01",
         "CH": 4,
-        "Instructor": "Ali",
+        "instructorUsername": "profAli",
         "Campus": "Male",
-        "Prereq": ["CMPS151"],
         "Seats": "40/50",
         "status": "pending",
-        "CRN": 22793,
-        "students":[]
+        "CRN": 22793
     },
     {
         "CName": "Data Structure",
@@ -66,13 +58,11 @@
         "Category": "Programming",
         "Section": "L01",
         "CH": 4,
-        "Instructor": "Rami",
+        "instructorUsername": "profRami",
         "Campus": "Male",
-        "Prereq": ["CMPS251"],
         "Seats": "45/50",
-        "status": "In-progress",
-        "CRN": 21058,
-        "students":[]
+        "status": "inprogress",
+        "CRN": 21058
     },
     {
         "CName": "SQL",
@@ -81,13 +71,11 @@
         "Category": "Databases",
         "Section": "L01",
         "CH": 3,
-        "Instructor": "Omar",
+        "instructorUsername": "profOmar",
         "Campus": "Male",
-        "Prereq": ["CMPS251"],
         "Seats": "20/50",
-        "status": "In-progress",
-        "CRN": 21269,
-        "students":[]
+        "status": "inprogress",
+        "CRN": 21269
     },
     {
         "CName": "Operating System",
@@ -96,13 +84,11 @@
         "Category": "Programming",
         "Section": "L01",
         "CH": 4,
-        "Instructor": "Rami",
+        "instructorUsername": "profRami",
         "Campus": "Male",
-        "Prereq": ["CMPS303", "CMPE263"],
         "Seats": "50/50",
         "status": "pending",
-        "CRN": 22392,
-        "students":[]
+        "CRN": 22392
     },
     {
         "CName": "Network I",
@@ -111,12 +97,10 @@
         "Category": "Networking",
         "Section": "L01",
         "CH": 4,
-        "Instructor": "Ali",
+        "instructorUsername": "profAli",
         "Campus": "Male",
-        "Prereq": ["CMPE263"],
         "Seats": "00/50",
         "status": "pending",
-        "CRN": 21415,
-        "students":[]
+        "CRN": 21415
     }
 ]

@@ -1,0 +1,17 @@
+[
+    {
+        "username": "aa2004",
+        "CRN": 22527,
+        "Grade": "B"
+    },
+    {
+        "username": "ha2004",
+        "CRN": 21981,
+        "Grade": null
+    },
+    {
+        "username": "oa2003",
+        "CRN": 21058,
+        "Grade": "A"
+    }
+]
