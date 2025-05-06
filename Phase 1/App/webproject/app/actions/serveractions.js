@@ -1,38 +1,51 @@
 'use server'
-import { revalidatePath } from 'next/cache'
-import { redirect } from 'next/navigation';
-export async function ServerLogin(formData) {
-        e.preventDefault();
-        const data = new FormData(loginform);
-        const info = Object.fromEntries(data);
-        const current= user.find(e=> e.username == info.username);
-    
-        if (current){
-            
-            if (current.password == info.password)
-            switch(current.type){
-            case "student":
-                localStorage.loggedStudent=current.username;
-                window.location.href = "search_register.html";
-                break;
-            case "admin":
-                localStorage.loggedAdmin=current.username;
-                window.location.href = "validatecourses.html";
-                break;
-            case "instructor":
-                localStorage.loggedInstructor=current.username;
-                window.location.href = "current.html";
-                break;
-                }
-            else
-            alert("Wrong password")
-            loginform.reset();
-        }
-        else{
-            loginform.reset();
-            alert("Wrong username")
-           
-        }
-    
-  
+import repo from '../repo/repo'
+export async function fetchTopClassesByEnrollment() {
+    return await repo.getTopClassesByEnrollment()
+}
+
+export async function fetchTopCoursesByGrade() {
+    return await repo.getTopCoursesByGrade()
+}
+
+export async function fetchTopStudentsByGPA() {
+    return await repo.getTopStudentsByGPA()
+}
+
+export async function fetchTopCategoriesByGrade() {
+    return await repo.getTopCategoriesByGrade()
+}
+
+export async function fetchLowestCoursesByGrade() {
+    return await repo.getLowestCoursesByGrade()
+}
+
+export async function fetchHighestFailureRateCourses() {
+    return await repo.getHighestFailureRateCourses()
+}
+
+export async function fetchBestCourseInEachCategory() {
+    return await repo.getBestCourseInEachCategory()
+}
+
+export async function fetchEnrollmentTrends() {
+    return await repo.getEnrollmentTrends()
+}
+
+export async function fetchCreditDistribution() {
+    return await repo.getCreditDistribution()
+}
+
+export async function fetchStudentsInEachCategory() {
+    return await repo.getStudentsInEachCategory()
+}
+
+export async function fetchPrerequisiteImpact() {
+    return await repo.getPrerequisiteImpact()
+}
+export async function fetchInstructorsPerCategory() {
+    return await repo.getInstructorsPerCategory();
+}
+export async function fetchStudentsWithCoursesAndInstructors() {
+    return await repo.getStudentsWithCoursesAndInstructors();
 }

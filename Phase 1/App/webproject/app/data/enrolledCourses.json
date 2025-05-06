@@ -2,12 +2,12 @@
     {
         "username": "aa2004",
         "CRN": 22527,
-        "Grade": "B"
+        "Grade": null
     },
     {
         "username": "ha2004",
         "CRN": 21981,
-        "Grade": null
+        "Grade": "B+"
     },
     {
         "username": "oa2003",

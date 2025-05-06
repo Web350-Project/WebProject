@@ -21,7 +21,7 @@ async function seed() {
   const classes = await fse.readJson(classesPath);
   const enrolledCourses = await fse.readJson(enrolledCoursesPath);
 
-  // Clear previous data in reverse dependency order
+  // Clear previous data (order matters due to foreign keys)
   await prisma.enrolledCourses.deleteMany();
   await prisma.classes.deleteMany();
   await prisma.students.deleteMany();
@@ -34,12 +34,10 @@ async function seed() {
     await prisma.user.create({ data: user });
   }
 
-  // 2. Seed Courses (without prereqs first)
+  // 2. Seed Courses (without prerequisites first)
   for (const course of courses) {
     const { Prereq, ...courseData } = course;
-    await prisma.courses.create({
-      data: courseData,
-    });
+    await prisma.courses.create({ data: courseData });
   }
 
   // 3. Connect Course Prerequisites
@@ -59,6 +57,12 @@ async function seed() {
   // 4. Seed Students
   for (const student of students) {
     const { username, ...studentData } = student;
+    const user = await prisma.user.findUnique({ where: { username } });
+
+    if (!user) {
+      throw new Error(`❌ Student user '${username}' not found in users.json.`);
+    }
+
     await prisma.students.create({
       data: {
         ...studentData,
@@ -70,6 +74,12 @@ async function seed() {
   // 5. Seed Instructors
   for (const instructor of instructors) {
     const { username, crns, ...instructorData } = instructor;
+    const user = await prisma.user.findUnique({ where: { username } });
+
+    if (!user) {
+      throw new Error(`❌ Instructor user '${username}' not found in users.json.`);
+    }
+
     await prisma.instructors.create({
       data: {
         ...instructorData,
