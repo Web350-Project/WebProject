@@ -1,50 +1,50 @@
 [
     {
-      "name": "Omar",
-      "username": "profOmar",
-      "expertise": "CMPS",
-      "crns": [22527, 21269, 22528, 22531, 22534, 22537]
+        "name": "Omar",
+        "username": "profOmar",
+        "expertise": "CMPS",
+        "crns": [22527, 22526, 22534, 22537]
     },
     {
-      "name": "Ali",
-      "username": "profAli",
-      "expertise": "CMPE",
-      "crns": [22793, 21415, 22529, 22532, 22535]
+        "name": "Ali",
+        "username": "profAli",
+        "expertise": "CMPE",
+        "crns": [22793, 22529, 22532, 22528, 22535]
     },
     {
-      "name": "Rami",
-      "username": "profRami",
-      "expertise": "CMPE",
-      "crns": [21058, 22392, 22530, 22533, 22536]
+        "name": "Rami",
+        "username": "profRami",
+        "expertise": "CMPE",
+        "crns": [22521, 22530, 22533, 22541]
     },
     {
-      "name": "Sara",
-      "username": "profSara",
-      "expertise": "CMPS",
-      "crns": [22521, 22538]
+        "name": "Sara",
+        "username": "profSara",
+        "expertise": "CMPS",
+        "crns": [22522, 22538, 22540]
     },
     {
-      "name": "Faisal",
-      "username": "profFaisal",
-      "expertise": "CMPE",
-      "crns": [22522, 22542]
+        "name": "Faisal",
+        "username": "profFaisal",
+        "expertise": "CMPE",
+        "crns": [22524, 22542]
     },
     {
-      "name": "Lina",
-      "username": "profLina",
-      "expertise": "CMPS",
-      "crns": [22539]
+        "name": "Lina",
+        "username": "profLina",
+        "expertise": "CMPS",
+        "crns": [22539]
     },
     {
-      "name": "Ahmed",
-      "username": "profAhmed",
-      "expertise": "CMPS",
-      "crns": [22540]
+        "name": "Ahmed",
+        "username": "profAhmed",
+        "expertise": "CMPS",
+        "crns": [22523, 22536, 22540]
     },
     {
-      "name": "Noura",
-      "username": "profNoura",
-      "expertise": "CMPE",
-      "crns": [22541]
+        "name": "Noura",
+        "username": "profNoura",
+        "expertise": "CMPE",
+        "crns": []
     }
-  ]
+]

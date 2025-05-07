@@ -1,186 +1,434 @@
 [
     {
-        "CName": "Programming Concept",
-        "CNo": "CMPS151",
-        "Category": "Programming",
-        "CH": 3,
+        "CName": "Compiler Design",
+        "CNo": "CMPS111",
+        "Category": "AI",
+        "CH": 5,
         "status": "inprogress",
         "Prereq": []
     },
     {
-        "CName": "Object-Oriented Programming",
-        "CNo": "CMPS251",
-        "Category": "Programming",
-        "CH": 4,
-        "status": "inprogress",
-        "Prereq": ["CMPS151"]
-    },
-    {
-        "CName": "Data Structure",
-        "CNo": "CMPS303",
-        "Category": "Programming",
-        "CH": 4,
-        "status": "inprogress",
-        "Prereq": ["CMPS251"]
-    },
-    {
-        "CName": "SQL",
-        "CNo": "CMPS330",
-        "Category": "Databases",
-        "CH": 3,
-        "status": "inprogress",
-        "Prereq": ["CMPS251"]
-    },
-    {
-        "CName": "Operating System",
-        "CNo": "CMPS405",
-        "Category": "Programming",
-        "CH": 4,
-        "status": "inprogress",
-        "Prereq": ["CMPS303", "CMPE263"]
-    },
-    {
-        "CName": "Network I",
-        "CNo": "CMPE355",
-        "Category": "Networking",
-        "CH": 4,
-        "status": "inprogress",
-        "Prereq": ["CMPE263"]
-    },
-    {
-        "CName": "Software Engineering",
-        "CNo": "CMPS310",
-        "Category": "Programming",
-        "CH": 4,
-        "status": "pending",
-        "Prereq": ["CMPS251"]
-    },
-    {
-        "CName": "Computer Architecture",
-        "CNo": "CMPE263",
+        "CName": "Digital Signal Processing",
+        "CNo": "CMPS662",
         "Category": "Computer Engineering",
         "CH": 3,
-        "status": "inprogress",
-        "Prereq": []
+        "status": "pending",
+        "Prereq": ["CMPS111"]
     },
     {
-        "CName": "Advanced Algorithms",
-        "CNo": "CMPS401",
-        "Category": "Programming",
-        "CH": 4,
-        "status": "inprogress",
-        "Prereq": ["CMPS303"]
-    },
-    {
-        "CName": "Mobile Application Development",
-        "CNo": "CMPS371",
-        "Category": "Programming",
+        "CName": "IT Project Management",
+        "CNo": "CMPS507",
+        "Category": "Databases",
         "CH": 3,
         "status": "pending",
-        "Prereq": ["CMPS251"]
+        "Prereq": ["CMPS662"]
     },
     {
-        "CName": "Artificial Intelligence",
-        "CNo": "CMPS481",
+        "CName": "Game Development",
+        "CNo": "CMPS627",
         "Category": "AI",
         "CH": 4,
         "status": "inprogress",
-        "Prereq": ["CMPS303", "CMPS330"]
+        "Prereq": []
     },
     {
-        "CName": "Database Management Systems",
-        "CNo": "CMPS332",
-        "Category": "Databases",
-        "CH": 3,
-        "status": "pending",
-        "Prereq": ["CMPS330"]
-    },
-    {
-        "CName": "Computer Networks II",
-        "CNo": "CMPE456",
+        "CName": "Computer Vision",
+        "CNo": "CMPS985",
         "Category": "Networking",
         "CH": 4,
         "status": "inprogress",
-        "Prereq": ["CMPE355"]
+        "Prereq": ["CMPS507"]
     },
     {
-        "CName": "Software Testing",
-        "CNo": "CMPS312",
-        "Category": "Programming",
-        "CH": 3,
-        "status": "pending",
-        "Prereq": ["CMPS310"]
-    },
-    {
-        "CName": "Cloud Computing",
-        "CNo": "CMPS420",
-        "Category": "Networking",
-        "CH": 4,
+        "CName": "Data Ethics",
+        "CNo": "CMPS775",
+        "Category": "AI",
+        "CH": 5,
         "status": "inprogress",
-        "Prereq": ["CMPE355"]
+        "Prereq": []
     },
     {
-        "CName": "Information Security",
-        "CNo": "CMPS320",
-        "Category": "Databases",
+        "CName": "Real-Time Systems",
+        "CNo": "CMPS613",
+        "Category": "Computer Engineering",
         "CH": 3,
         "status": "pending",
-        "Prereq": ["CMPS330"]
+        "Prereq": []
     },
     {
-        "CName": "Embedded Systems",
-        "CNo": "CMPE365",
+        "CName": "Virtualization",
+        "CNo": "CMPS526",
         "Category": "Computer Engineering",
         "CH": 4,
         "status": "inprogress",
-        "Prereq": ["CMPE263"]
+        "Prereq": []
+    },
+    {
+        "CName": "Natural Language Processing",
+        "CNo": "CMPS18",
+        "Category": "Computer Engineering",
+        "CH": 4,
+        "status": "pending",
+        "Prereq": []
+    },
+    {
+        "CName": "Bioinformatics",
+        "CNo": "CMPS372",
+        "Category": "Computer Engineering",
+        "CH": 5,
+        "status": "pending",
+        "Prereq": ["CMPS507"]
+    },
+    {
+        "CName": "Computer Vision 1",
+        "CNo": "CMPS593",
+        "Category": "Networking",
+        "CH": 5,
+        "status": "inprogress",
+        "Prereq": []
+    },
+    {
+        "CName": "High Performance Computing",
+        "CNo": "CMPS453",
+        "Category": "AI",
+        "CH": 4,
+        "status": "inprogress",
+        "Prereq": []
+    },
+    {
+        "CName": "Compiler Design 1",
+        "CNo": "CMPS998",
+        "Category": "Networking",
+        "CH": 5,
+        "status": "pending",
+        "Prereq": []
+    },
+    {
+        "CName": "Natural Language Processing 1",
+        "CNo": "CMPS86",
+        "Category": "Computer Engineering",
+        "CH": 4,
+        "status": "inprogress",
+        "Prereq": ["CMPS613"]
+    },
+    {
+        "CName": "Compiler Design 2",
+        "CNo": "CMPS343",
+        "Category": "AI",
+        "CH": 4,
+        "status": "pending",
+        "Prereq": []
+    },
+    {
+        "CName": "Machine Learning",
+        "CNo": "CMPS965",
+        "Category": "Programming",
+        "CH": 4,
+        "status": "pending",
+        "Prereq": []
     },
     {
         "CName": "Data Mining",
-        "CNo": "CMPS430",
+        "CNo": "CMPS732",
+        "Category": "Programming",
+        "CH": 3,
+        "status": "pending",
+        "Prereq": []
+    },
+    {
+        "CName": "Data Warehousing",
+        "CNo": "CMPS702",
+        "Category": "Computer Engineering",
+        "CH": 3,
+        "status": "pending",
+        "Prereq": []
+    },
+    {
+        "CName": "Augmented Reality",
+        "CNo": "CMPS751",
+        "Category": "Networking",
+        "CH": 4,
+        "status": "inprogress",
+        "Prereq": ["CMPS998"]
+    },
+    {
+        "CName": "Edge Computing",
+        "CNo": "CMPS650",
+        "Category": "Programming",
+        "CH": 3,
+        "status": "inprogress",
+        "Prereq": []
+    },
+    {
+        "CName": "Data Warehousing 1",
+        "CNo": "CMPS148",
+        "Category": "Programming",
+        "CH": 4,
+        "status": "pending",
+        "Prereq": ["CMPS775"]
+    },
+    {
+        "CName": "Edge Computing 1",
+        "CNo": "CMPS648",
+        "Category": "Databases",
+        "CH": 4,
+        "status": "pending",
+        "Prereq": []
+    },
+    {
+        "CName": "Deep Learning",
+        "CNo": "CMPS181",
+        "Category": "AI",
+        "CH": 5,
+        "status": "inprogress",
+        "Prereq": []
+    },
+    {
+        "CName": "Numerical Methods",
+        "CNo": "CMPS125",
+        "Category": "Networking",
+        "CH": 5,
+        "status": "inprogress",
+        "Prereq": []
+    },
+    {
+        "CName": "Embedded Systems",
+        "CNo": "CMPS719",
+        "Category": "Programming",
+        "CH": 5,
+        "status": "pending",
+        "Prereq": ["CMPS751"]
+    },
+    {
+        "CName": "Virtualization 1",
+        "CNo": "CMPS183",
+        "Category": "AI",
+        "CH": 5,
+        "status": "pending",
+        "Prereq": []
+    },
+    {
+        "CName": "High Performance Computing 1",
+        "CNo": "CMPS262",
+        "Category": "Programming",
+        "CH": 5,
+        "status": "inprogress",
+        "Prereq": ["CMPS526"]
+    },
+    {
+        "CName": "Compiler Design 2",
+        "CNo": "CMPS472",
+        "Category": "Networking",
+        "CH": 5,
+        "status": "pending",
+        "Prereq": ["CMPS181"]
+    },
+    {
+        "CName": "Computer Vision 2",
+        "CNo": "CMPS973",
+        "Category": "Databases",
+        "CH": 4,
+        "status": "inprogress",
+        "Prereq": []
+    },
+    {
+        "CName": "Deep Learning 1",
+        "CNo": "CMPS891",
+        "Category": "Programming",
+        "CH": 4,
+        "status": "inprogress",
+        "Prereq": ["CMPS732"]
+    },
+    {
+        "CName": "Data Ethics 1",
+        "CNo": "CMPS757",
+        "Category": "Networking",
+        "CH": 5,
+        "status": "pending",
+        "Prereq": ["CMPS702"]
+    },
+    {
+        "CName": "Web Development",
+        "CNo": "CMPS847",
+        "Category": "Computer Engineering",
+        "CH": 5,
+        "status": "inprogress",
+        "Prereq": []
+    },
+    {
+        "CName": "Computer Vision 2",
+        "CNo": "CMPS910",
+        "Category": "Databases",
+        "CH": 3,
+        "status": "pending",
+        "Prereq": []
+    },
+    {
+        "CName": "Natural Language Processing 2",
+        "CNo": "CMPS919",
+        "Category": "Databases",
+        "CH": 4,
+        "status": "pending",
+        "Prereq": []
+    },
+    {
+        "CName": "Real-Time Systems 1",
+        "CNo": "CMPS103",
+        "Category": "Networking",
+        "CH": 5,
+        "status": "inprogress",
+        "Prereq": ["CMPS702"]
+    },
+    {
+        "CName": "Bioinformatics 1",
+        "CNo": "CMPS787",
+        "Category": "Databases",
+        "CH": 3,
+        "status": "inprogress",
+        "Prereq": ["CMPS662"]
+    },
+    {
+        "CName": "Robotics",
+        "CNo": "CMPS501",
+        "Category": "Programming",
+        "CH": 4,
+        "status": "pending",
+        "Prereq": []
+    },
+    {
+        "CName": "Virtualization 2",
+        "CNo": "CMPS921",
+        "Category": "Programming",
+        "CH": 5,
+        "status": "pending",
+        "Prereq": ["CMPS18"]
+    },
+    {
+        "CName": "Digital Signal Processing 1",
+        "CNo": "CMPS685",
+        "Category": "Databases",
+        "CH": 3,
+        "status": "pending",
+        "Prereq": ["CMPS757"]
+    },
+    {
+        "CName": "IoT Systems",
+        "CNo": "CMPS551",
+        "Category": "AI",
+        "CH": 3,
+        "status": "inprogress",
+        "Prereq": ["CMPS103"]
+    },
+    {
+        "CName": "Blockchain",
+        "CNo": "CMPS967",
+        "Category": "Networking",
+        "CH": 4,
+        "status": "inprogress",
+        "Prereq": []
+    },
+    {
+        "CName": "Deep Learning 2",
+        "CNo": "CMPS292",
+        "Category": "Computer Engineering",
+        "CH": 3,
+        "status": "pending",
+        "Prereq": []
+    },
+    {
+        "CName": "Computer Vision 2",
+        "CNo": "CMPS559",
+        "Category": "Computer Engineering",
+        "CH": 5,
+        "status": "inprogress",
+        "Prereq": []
+    },
+    {
+        "CName": "Embedded Systems 1",
+        "CNo": "CMPS592",
+        "Category": "Computer Engineering",
+        "CH": 3,
+        "status": "pending",
+        "Prereq": []
+    },
+    {
+        "CName": "Agile Development",
+        "CNo": "CMPS5",
+        "Category": "Computer Engineering",
+        "CH": 4,
+        "status": "pending",
+        "Prereq": ["CMPS183"]
+    },
+    {
+        "CName": "High Performance Computing 2",
+        "CNo": "CMPS764",
+        "Category": "Networking",
+        "CH": 4,
+        "status": "inprogress",
+        "Prereq": ["CMPS501"]
+    },
+    {
+        "CName": "Edge Computing 2",
+        "CNo": "CMPS500",
+        "Category": "Computer Engineering",
+        "CH": 3,
+        "status": "inprogress",
+        "Prereq": []
+    },
+    {
+        "CName": "IoT Systems 1",
+        "CNo": "CMPS545",
+        "Category": "AI",
+        "CH": 5,
+        "status": "inprogress",
+        "Prereq": []
+    },
+    {
+        "CName": "Computer Graphics",
+        "CNo": "CMPS538",
+        "Category": "Programming",
+        "CH": 5,
+        "status": "inprogress",
+        "Prereq": []
+    },
+    {
+        "CName": "Bioinformatics 2",
+        "CNo": "CMPS288",
+        "Category": "AI",
+        "CH": 5,
+        "status": "pending",
+        "Prereq": []
+    },
+    {
+        "CName": "Network Security",
+        "CNo": "CMPS312",
+        "Category": "Computer Engineering",
+        "CH": 5,
+        "status": "inprogress",
+        "Prereq": []
+    },
+    {
+        "CName": "Machine Vision",
+        "CNo": "CMPS455",
         "Category": "AI",
         "CH": 3,
         "status": "pending",
-        "Prereq": ["CMPS330"]
+        "Prereq": []
     },
     {
-      "CName": "Human-Computer Interaction",
-      "CNo": "CMPS461",
-      "Category": "Programming",
-      "CH": 3,
-      "status": "inprogress",
-      "Prereq": ["CMPS310"]
+        "CName": "Artificial Intelligence",
+        "CNo": "CMPS302",
+        "Category": "AI",
+        "CH": 4,
+        "status": "inprogress",
+        "Prereq": []
     },
     {
-      "CName": "Parallel Computing",
-      "CNo": "CMPS415",
-      "Category": "Programming",
-      "CH": 4,
-      "status": "pending",
-      "Prereq": ["CMPS303"]
-    },
-    {
-      "CName": "Big Data Analytics",
-      "CNo": "CMPS435",
-      "Category": "Databases",
-      "CH": 3,
-      "status": "inprogress",
-      "Prereq": ["CMPS332"]
-    },
-    {
-      "CName": "Wireless Networks",
-      "CNo": "CMPE458",
-      "Category": "Networking",
-      "CH": 4,
-      "status": "pending",
-      "Prereq": ["CMPE456"]
-    },
-    {
-      "CName": "Computer Vision",
-      "CNo": "CMPS485",
-      "Category": "AI",
-      "CH": 3,
-      "status": "inprogress",
-      "Prereq": ["CMPS481"]
+        "CName": "Neural Networks",
+        "CNo": "CMPS435",
+        "Category": "AI",
+        "CH": 5,
+        "status": "pending",
+        "Prereq": []
     }
 ]
