@@ -191,6 +191,81 @@ async getStudentsWithCoursesAndInstructors() {
         ORDER BY s.name, c.CName
     `;
 }
+async getLowestGradeForEachStudent() {
+    return await prisma.$queryRaw`
+        WITH GradeMapping AS (
+            SELECT 
+                s.name AS studentName,
+                c.CName AS courseName,
+                ec.Grade,
+                CASE ec.Grade
+                    WHEN 'A' THEN 4.0
+                    WHEN 'B+' THEN 3.5
+                    WHEN 'B' THEN 3.0
+                    WHEN 'C+' THEN 2.5
+                    WHEN 'C' THEN 2.0
+                    WHEN 'D+' THEN 1.5
+                    WHEN 'D' THEN 1.0
+                    WHEN 'F' THEN 0.0
+                    ELSE NULL
+                END AS gradeValue
+            FROM students s
+            JOIN enrolledCourses ec ON s.username = ec.username
+            JOIN classes cl ON ec.CRN = cl.CRN
+            JOIN courses c ON cl.CNo = c.CNo
+            WHERE ec.Grade IS NOT NULL
+        ),
+        RankedGrades AS (
+            SELECT 
+                *,
+                ROW_NUMBER() OVER (PARTITION BY studentName ORDER BY gradeValue ASC) AS rank
+            FROM GradeMapping
+        )
+        SELECT 
+            studentName,
+            courseName AS lowestCourseGrade,
+            Grade AS letterGrade
+        FROM RankedGrades
+        WHERE rank = 1
+    `;
+}
+async getInstructorCourseAverageGrades() {
+    return await prisma.$queryRaw`
+        SELECT 
+            i.username AS instructorUsername,
+            i.name AS instructorName,
+            c.CNo AS courseNumber,
+            c.CName AS courseName,
+            AVG(
+                CASE ec.Grade
+                    WHEN 'A' THEN 4.0
+                    WHEN 'B+' THEN 3.5
+                    WHEN 'B' THEN 3.0
+                    WHEN 'C+' THEN 2.5
+                    WHEN 'C' THEN 2.0
+                    WHEN 'D+' THEN 1.5
+                    WHEN 'D' THEN 1.0
+                    WHEN 'F' THEN 0.0
+                    ELSE NULL
+                END
+            ) AS averageGrade,
+            COUNT(ec.CRN) AS enrollmentCount
+        FROM instructors i
+        JOIN classes cl ON i.username = cl.instructorUsername
+        JOIN courses c ON cl.CNo = c.CNo
+        JOIN enrolledCourses ec ON cl.CRN = ec.CRN
+        WHERE ec.Grade IS NOT NULL
+        GROUP BY i.username, i.name, c.CNo, c.CName
+        ORDER BY i.name, c.CName
+    `;
+}
+async getDeansList(){
+    return await prisma.students.findMany({
+        where: { GPA: { gte: 3.5 } },
+        select: { id: true, name: true, GPA: true },
+        orderBy: { GPA: 'desc' }
+    });
+}
 }
 
 export default new repo();

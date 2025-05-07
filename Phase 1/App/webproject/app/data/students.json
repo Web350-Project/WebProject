@@ -1,23 +1,95 @@
 [
+    
     {
-        "name": "Ahmad",
-        "id": "aa2004",
-        "username": "aa2004",
+            "name": "Khalid",
+            "id": "ka2005",
+            "username": "ka2005",
+            "gender": "male",
+            "GPA": 3.5
+        },
+    {
+        "name": "Salma",
+        "id": "sa2005",
+        "username": "sa2005",
+        "gender": "female",
+        "GPA": 3.7
+    },
+    {
+        "name": "Nasser",
+        "id": "na2004",
+        "username": "na2004",
+        "gender": "male",
+        "GPA": 3.2
+    },
+    {
+        "name": "Aisha",
+        "id": "ai2005",
+        "username": "ai2005",
+        "gender": "female",
+        "GPA": 3.9
+    },
+    {
+        "name": "Fahad",
+        "id": "fa2004",
+        "username": "fa2004",
+        "gender": "male",
+        "GPA": 3.6
+    },
+    {
+        "name": "Layan",
+        "id": "la2005",
+        "username": "la2005",
+        "gender": "female",
+        "GPA": 3.4
+    },
+    {
+        "name": "Omar",
+        "id": "om2004",
+        "username": "om2004",
+        "gender": "male",
+        "GPA": 3.8
+    },
+    {
+        "name": "Deema",
+        "id": "de2005",
+        "username": "de2005",
+        "gender": "female",
+        "GPA": 3.3
+    },
+    {
+        "name": "Turki",
+        "id": "tu2004",
+        "username": "tu2004",
         "gender": "male",
         "GPA": 3.1
     },
     {
-        "name": "Hatem",
-        "id": "ha2004",
-        "username": "ha2004",
-        "gender": "male",
-        "GPA": 3.89
-    },
-    {
-        "name": "Obada",
-        "id": "oa2003",
-        "username": "oa2003",
-        "gender": "male",
-        "GPA": 3.91
+        "name": "Jana",
+        "id": "ja2005",
+        "username": "ja2005",
+        "gender": "female",
+        "GPA": 4.0
     }
+,
+{
+    "name": "Ahmad",
+    "id": "aa2004",
+    "username": "aa2004",
+    "gender": "male",
+    "GPA": 3.1
+},
+{
+    "name": "Hatem",
+    "id": "ha2004",
+    "username": "ha2004",
+    "gender": "male",
+    "GPA": 3.89
+},
+{
+    "name": "Obada",
+    "id": "oa2003",
+    "username": "oa2003",
+    "gender": "male",
+    "GPA": 3.91
+}
 ]

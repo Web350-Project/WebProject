@@ -1,17 +1,20 @@
 [
-    {
-        "username": "aa2004",
-        "CRN": 22527,
-        "Grade": null
-    },
-    {
-        "username": "ha2004",
-        "CRN": 21981,
-        "Grade": "B+"
-    },
-    {
-        "username": "oa2003",
-        "CRN": 21058,
-        "Grade": "A"
-    }
+    { "username": "aa2004", "CRN": 22527, "Grade": "C" },
+    { "username": "ha2004", "CRN": 21981, "Grade": "A" },
+    { "username": "oa2003", "CRN": 22520, "Grade": "B+" },
+    { "username": "aa2004", "CRN": 22793, "Grade": "B" },
+    { "username": "ha2004", "CRN": 21269, "Grade": "C+" },
+    { "username": "oa2003", "CRN": 22392, "Grade": "A" },
+    { "username": "aa2004", "CRN": 21415, "Grade": "B+" },
+    { "username": "ha2004", "CRN": 21058, "Grade": "A" },
+    { "username": "oa2003", "CRN": 22527, "Grade": "C+" },
+    { "username": "aa2004", "CRN": 21981, "Grade": "D" },
+    { "username": "ka2005", "CRN": 22520, "Grade": "A" },
+    { "username": "sa2005", "CRN": 22793, "Grade": "B+" },
+    { "username": "na2004", "CRN": 21269, "Grade": "C+" },
+    { "username": "la2005", "CRN": 22392, "Grade": "C" },
+    { "username": "om2004", "CRN": 21415, "Grade": "D" },
+    { "username": "de2005", "CRN": 21058, "Grade": "B" },
+    { "username": "tu2004", "CRN": 22520, "Grade": "A" },
+    { "username": "oa2003", "CRN": 21058, "Grade": "A" }
 ]

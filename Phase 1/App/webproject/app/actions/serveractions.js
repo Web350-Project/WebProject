@@ -49,3 +49,12 @@ export async function fetchInstructorsPerCategory() {
 export async function fetchStudentsWithCoursesAndInstructors() {
     return await repo.getStudentsWithCoursesAndInstructors();
 }
+export async function fetchLowestGradeForEachStudent() {
+    return await repo.getLowestGradeForEachStudent();
+}
+export async function fetchgetInstructorCourseAverageGrades() {
+    return await repo.getInstructorCourseAverageGrades();
+}
+export async function fetchgetDeansList() {
+    return await repo.getDeansList();
+}

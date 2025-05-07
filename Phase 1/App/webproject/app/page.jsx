@@ -27,8 +27,17 @@ export default function Home() {
       <Link href={`/stats/instructorsPerCategory`} className="stat-card">
         <div>Number of Instructors in each category </div>
       </Link>
+      <Link href={`/stats/instructorAVG`} className="stat-card">
+        <div>Average Grade per Instructor </div>
+      </Link>
       <Link href={`/stats/StudentCourseInstructorANDgrade`} className="stat-card">
         <div>Student & course & Instructor & grade</div>
+        </Link>
+        <Link href={`/stats/LowestGradeForEachStudent`} className="stat-card">
+        <div>Lowest Grade For Each Student</div>
+        </Link>
+        <Link href={`/stats/DeansList`} className="stat-card">
+        <div>Dean's List</div>
         </Link>
     </div>
   </>
