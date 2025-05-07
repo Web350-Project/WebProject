@@ -1,45 +1,25 @@
-import Link from "next/link";
 import React from "react";
-
+import Card from "./components/Card";
 
 export default function Home() {
   return (
-    <>
-    <div className="stats-grid">
-      <Link href={`/stats/topClassesEnrollment`} className="stat-card">
-        <div>Top 10 Classes by Enrollment</div>
-      </Link>
-      <Link href={`/stats/topCoursesGrade`} className="stat-card">
-        <div>Top 10 Highest Average Grade Courses</div>
-      </Link>
-      <Link href={`/stats/topStudentsGpa`} className="stat-card">
-        <div>Top 10 Students by GPA</div>
-      </Link>
-      <Link href={`/stats/topCategoriesGrade`} className="stat-card">
-        <div>Top 10 Highest Average Grade Categories</div>
-      </Link>
-      <Link href={`/stats/bestCourseinCategory`} className="stat-card">
-        <div>Best course grade average in each category </div>
-      </Link>
-      <Link href={`/stats/studentsPerCategory`} className="stat-card">
-        <div>Number of students in each category </div>
-      </Link>
-      <Link href={`/stats/instructorsPerCategory`} className="stat-card">
-        <div>Number of Instructors in each category </div>
-      </Link>
-      <Link href={`/stats/instructorAVG`} className="stat-card">
-        <div>Average Grade per Instructor </div>
-      </Link>
-      <Link href={`/stats/StudentCourseInstructorANDgrade`} className="stat-card">
-        <div>Student & course & Instructor & grade</div>
-        </Link>
-        <Link href={`/stats/LowestGradeForEachStudent`} className="stat-card">
-        <div>Lowest Grade For Each Student</div>
-        </Link>
-        <Link href={`/stats/DeansList`} className="stat-card">
-        <div>Dean's List</div>
-        </Link>
+    <div className="page-container">
+      <header className="page-header">
+        <h1>Qatar University Statistics Dashboard</h1>
+      </header>
+      <div className="stats-grid">
+        <Card href="/stats/topClassesEnrollment" title="Top 10 Classes by Enrollment" />
+        <Card href="/stats/topCoursesGrade" title="Top 10 Highest Average Grade Courses" />
+        <Card href="/stats/topStudentsGpa" title="Top 10 Students by GPA" />
+        <Card href="/stats/topCategoriesGrade" title="Top 10 Highest Average Grade Categories" />
+        <Card href="/stats/bestCourseinCategory" title="Best Course Grade Average in Each Category" />
+        <Card href="/stats/studentsPerCategory" title="Number of Students in Each Category" />
+        <Card href="/stats/instructorsPerCategory" title="Number of Instructors in Each Category" />
+        <Card href="/stats/instructorAVG" title="Average Grade per Instructor" />
+        <Card href="/stats/StudentCourseInstructorANDgrade" title="Student, Course, Instructor & Grade" />
+        <Card href="/stats/LowestGradeForEachStudent" title="Lowest Grade For Each Student" />
+        <Card href="/stats/DeansList" title="Dean's List" />
+      </div>
     </div>
-  </>
   );
 }

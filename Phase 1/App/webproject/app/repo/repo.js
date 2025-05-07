@@ -2,7 +2,6 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient()
 
 class repo {
-    // Top 10 Classes by Enrollment
     async getTopClassesByEnrollment() {
         return await prisma.classes.findMany({
             select: {
@@ -19,7 +18,6 @@ class repo {
         })
     }
 
-    // Top 10 Highest Average Grade Courses
     async getTopCoursesByGrade() {
         return await prisma.$queryRaw`
             SELECT 
@@ -51,7 +49,6 @@ class repo {
         `;
     }
 
-    // Top 10 Students by GPA
     async getTopStudentsByGPA() {
         return await prisma.students.findMany({
             select: {
@@ -66,7 +63,6 @@ class repo {
         })
     }
 
-    // Top 10 Highest Average Grade Categories
     async getTopCategoriesByGrade() {
         return await prisma.$queryRaw`
             SELECT 
@@ -107,7 +103,6 @@ class repo {
         ORDER BY instructorCount DESC
     `;
     }
-    // Best course grade average in each category
     async getBestCourseInEachCategory() {
         return await prisma.$queryRaw`
             WITH CourseGrades AS (

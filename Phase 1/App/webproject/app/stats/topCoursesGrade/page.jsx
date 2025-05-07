@@ -6,7 +6,7 @@ export default async function topCoursesGrade() {
 
     return (
         <div className="top-classes-container">
-            <h1>Hieght Grade each course</h1>
+            <h1>Highest Grade each course</h1>
             <div className="table-wrapper">
                 <table className="enrollment-table">
                     <thead>
