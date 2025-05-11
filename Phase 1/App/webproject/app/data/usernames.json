@@ -1,34 +1,4 @@
-[
-    {
-        "username": "aa2004",
-        "password": "123",
-        "type": "student"
-    },
-    {
-        "username": "ha2004",
-        "password": "123",
-        "type": "student"
-    },
-    {
-        "username": "oa2003",
-        "password": "123",
-        "type": "student"
-    },
-    {
-        "username": "profAli",
-        "password": "123",
-        "type": "instructor"
-    },
-    {
-        "username": "profOmar",
-        "password": "123",
-        "type": "instructor"
-    },
-    {
-        "username": "admin1",
-        "password": "123",
-        "type": "admin"
-    },
+[   
     {
         "username": "profRami",
         "password": "123",

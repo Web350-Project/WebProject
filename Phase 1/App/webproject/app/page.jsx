@@ -1,11 +1,36 @@
+'use client';
+
 import React from "react";
 import Card from "./components/Card";
+import { useSession, signOut } from "next-auth/react";
 
 export default function Home() {
+  const { data: session } = useSession();
+
   return (
     <div className="page-container">
       <header className="page-header">
         <h1>Qatar University Statistics Dashboard</h1>
+        {session ? (
+          <div style={{ marginTop: "1rem" }}>
+            <p>Welcome, {session.user.name}!</p>
+            <button
+              onClick={() => signOut({ callbackUrl: "/auth/signin" })}
+              style={{
+                padding: "8px 16px",
+                backgroundColor: "#8A1739",
+                color: "white",
+                border: "none",
+                borderRadius: "8px",
+                cursor: "pointer",
+              }}
+            >
+              Logout
+            </button>
+          </div>
+        ) : (
+          <p>Please sign in to access the dashboard.</p>
+        )}
       </header>
       <div className="stats-grid">
         <Card href="/stats/topClassesEnrollment" title="Top 10 Classes by Enrollment" />
