@@ -10,7 +10,7 @@ const prisma = new PrismaClient();
 export const authOptions = {
   adapter: PrismaAdapter(prisma),
   providers: [
-    CredentialsProvider({
+    CredentialsProvider.default({
       name: "Credentials",
       credentials: {
         email: { label: "Email", type: "email" },
@@ -42,7 +42,7 @@ export const authOptions = {
         };
       },
     }),
-    GitHubProvider({
+    GitHubProvider.default({
       clientId: process.env.GITHUB_ID,
       clientSecret: process.env.GITHUB_SECRET,
     }),
@@ -73,4 +73,4 @@ export const authOptions = {
   debug: true, // Enable debug mode for detailed logs
 };
 
-export const { handlers, auth, signIn, signOut } = NextAuth(authOptions);
+export const { handlers, auth, signIn, signOut } = NextAuth.default(authOptions);
