@@ -3,7 +3,7 @@ let Allstudents = localStorage.students ? JSON.parse(localStorage.students) : []
 if (Allstudents.length === 0)
     loadAllstudents();
 async function loadAllstudents() {
-    const response2 = await fetch("/json/students.json");
+    const response2 = await fetch("/public/json/students.json");
     Allstudents = await response2.json();
     localStorage.students = JSON.stringify(Allstudents);
 }
@@ -12,7 +12,7 @@ let classes = localStorage.classes ? JSON.parse(localStorage.classes) : [];
 if (classes.length === 0)
     loadclasses();
 async function loadclasses() {
-    const response2 = await fetch("/json/classes.json");
+    const response2 = await fetch("/public/json/classes.json");
     classes = await response2.json();
     localStorage.classes = JSON.stringify(classes);
 }
@@ -80,7 +80,7 @@ students = students.map(student => {
 }
 
 async function info() {
-    const response2 = await fetch("/json/students.json");
+    const response2 = await fetch("/public/json/students.json");
     Allstudents = await response2.json();
     const course= classes.find(e=> e.CRN==localStorage.currentCRN) 
     course.students.forEach(studentUsername => {

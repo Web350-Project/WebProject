@@ -5,7 +5,7 @@ else
     displayClasses(classes);
 
 async function loadClasses() {
-    const response = await fetch("/json/classes.json");
+    const response = await fetch("/public/json/classes.json");
     classes = await response.json();
     localStorage.classes = JSON.stringify(classes);
     displayClasses(classes);
@@ -65,7 +65,7 @@ function registerCourse(studentUsername, event) {
 
     async function getStudent() {
         if (students.length === 0) {
-            const response = await fetch("/json/students.json");
+            const response = await fetch("/public/json/students.json");
             students = await response.json();
             localStorage.students = JSON.stringify(students);
         }

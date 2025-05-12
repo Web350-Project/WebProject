@@ -33,10 +33,10 @@ function showOnlyClasses() {
 loadCourseOptions();
 
 async function loadClasses(type) {
-    const response = await fetch("/json/courses.json");
+    const response = await fetch("/public/json/courses.json");
     let cData = await response.json();
     if(type===1){
-    const response2 = await fetch("/json/classes.json");
+    const response2 = await fetch("/public/json/classes.json");
     classes = await response2.json();
     localStorage.classes = JSON.stringify(classes);
     }
@@ -131,7 +131,7 @@ function searchCourses() {
     }
 }
 async function getStudents() {
-    const response = await fetch("/json/students.json");
+    const response = await fetch("/public/json/students.json");
     students = await response.json();
     localStorage.students = JSON.stringify(students);
 }

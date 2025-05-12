@@ -18,7 +18,7 @@ async function students() {
     if (localStorage.students) {
         Allstudents = JSON.parse(localStorage.students);} 
     else {
-        const response = await fetch("/json/students.json");
+        const response = await fetch("/public/json/students.json");
         Allstudents = await response.json();
         localStorage.students = JSON.stringify(Allstudents);
     }

@@ -5,14 +5,14 @@ let Instructor=[];
 let currentCourses=[];
 info()
 async function loadclasses() {
-    const response2 = await fetch("/json/classes.json");
+    const response2 = await fetch("/public/json/classes.json");
     classes = await response2.json();
 }
 let Allclasses=[];
 const search = document.querySelector("#searchbox");
 const coursebox= document.querySelector('#coursesbox');
 async function info() {
-    const response = await fetch("/json/instructor.json");
+    const response = await fetch("/public/json/instructor.json");
     Instructor = await response.json();
    
     console.log(Allclasses)

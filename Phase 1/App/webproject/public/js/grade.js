@@ -11,13 +11,13 @@ if (classes.length === 0) loadClasses();
 submit.addEventListener("click", handleSubmit);
 
 async function loadAllstudents() {
-    const response = await fetch("/json/students.json");
+    const response = await fetch("/public/json/students.json");
     Allstudents = await response.json();
     localStorage.students = JSON.stringify(Allstudents);
 }
 
 async function loadClasses() {
-    const response = await fetch("/json/classes.json");
+    const response = await fetch("/public/json/classes.json");
     classes = await response.json();
     localStorage.classes = JSON.stringify(classes);
 }

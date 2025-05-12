@@ -4,7 +4,7 @@ const loginform = document.querySelector('#login-form');
 loginform.addEventListener('submit',check);
 
 async function Users() {
-    const response = await fetch("/json/usernames.json");
+    const response = await fetch("/public/json/usernames.json");
     user = await response.json();
 }
 function check(e){
