@@ -5,7 +5,7 @@ import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
 export default function SignIn() {
-  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const router = useRouter();
@@ -13,13 +13,13 @@ export default function SignIn() {
   const handleCredentialsSubmit = async (e) => {
     e.preventDefault();
     const result = await signIn("credentials", {
-      email,
+      username,
       password,
       redirect: false,
     });
 
     if (result?.error) {
-      setError("Invalid email or password");
+      setError("Invalid username or password");
     } else {
       router.push("/");
     }
@@ -37,12 +37,12 @@ export default function SignIn() {
       <div style={{ maxWidth: "400px", margin: "0 auto", padding: "2rem" }}>
         <form onSubmit={handleCredentialsSubmit}>
           <div style={{ marginBottom: "1rem" }}>
-            <label htmlFor="email">Email</label>
+            <label htmlFor="username">Username</label>
             <input
-              id="email"
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              id="username"
+              type="text"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
               className="search-input"
               required
             />
@@ -71,7 +71,7 @@ export default function SignIn() {
               cursor: "pointer",
             }}
           >
-            Sign In with Email
+            Sign In with Username
           </button>
         </form>
         <div style={{ marginTop: "1rem", textAlign: "center" }}>

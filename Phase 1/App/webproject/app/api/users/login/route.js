@@ -6,20 +6,20 @@ const prisma = new PrismaClient();
 
 export async function POST(request) {
   try {
-    const { email, password } = await request.json();
+    const { username, password } = await request.json();
 
-    if (!email || !password) {
+    if (!username || !password) {
       return Response.json(
-        { error: "Missing email or password" },
+        { error: "Missing username or password" },
         { status: 400 }
       );
     }
 
     const user = await prisma.user.findUnique({
-      where: { email },
+      where: { username },
     });
 
-    if (!user || !user.password) {
+    if (!user) {
       return Response.json(
         { error: "Invalid credentials" },
         { status: 401 }
@@ -34,10 +34,19 @@ export async function POST(request) {
       );
     }
 
-    const token = signJwt({ id: user.id, email: user.email, name: user.name, role: user.role });
+    const token = signJwt({ 
+      username: user.username, 
+      type: user.type 
+    });
 
     return Response.json(
-      { user: { id: user.id, email: user.email, name: user.name, role: user.role }, token },
+      { 
+        user: { 
+          username: user.username, 
+          type: user.type 
+        }, 
+        token 
+      },
       { status: 200 }
     );
   } catch (error) {

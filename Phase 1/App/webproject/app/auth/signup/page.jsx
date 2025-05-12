@@ -1,91 +1,70 @@
 'use client';
 
-import { useState } from "react";
+import { useSession, signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { useEffect } from "react";
+import Card from "./components/Card";
 
-export default function SignUp() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
-  const [error, setError] = useState("");
+export default function Home() {
+  const { data: session, status } = useSession();
   const router = useRouter();
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await fetch("/api/users", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password, name }),
-      });
-
-      if (!response.ok) {
-        const { error } = await response.json();
-        throw new Error(error);
-      }
-
-      router.push("/auth/signin");
-    } catch (err) {
-      setError(err.message);
+  
+  useEffect(() => {
+    if (status === "unauthenticated") {
+      router.push("/auth/signin?callbackUrl=/");
     }
-  };
+  }, [status, router]);
+
+  if (status === "loading") {
+    return (
+      <div className="page-container">
+        <header className="page-header">
+          <h1>Qatar University Statistics Dashboard</h1>
+          <p>Loading session...</p>
+        </header>
+      </div>
+    );
+  }
+
+  if (!session) {
+    return null;
+  }
 
   return (
     <div className="page-container">
       <header className="page-header">
-        <h1>Sign Up</h1>
-      </header>
-      <div style={{ maxWidth: "400px", margin: "0 auto", padding: "2rem" }}>
-        <form onSubmit={handleSubmit}>
-          <div style={{ marginBottom: "1rem" }}>
-            <label htmlFor="name">Name</label>
-            <input
-              id="name"
-              type="text"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              className="search-input"
-              required
-            />
-          </div>
-          <div style={{ marginBottom: "1rem" }}>
-            <label htmlFor="email">Email</label>
-            <input
-              id="email"
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="search-input"
-              required
-            />
-          </div>
-          <div style={{ marginBottom: "1rem" }}>
-            <label htmlFor="password">Password</label>
-            <input
-              id="password"
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="search-input"
-              required
-            />
-          </div>
-          {error && <p style={{ color: "red" }}>{error}</p>}
+        <h1>Qatar University Statistics Dashboard</h1>
+        <div style={{ marginTop: "1rem" }}>
+          <p>Welcome, {session.user.username}!</p>
           <button
-            type="submit"
+            onClick={() => signOut({ callbackUrl: "/auth/signin" })}
             style={{
-              width: "100%",
-              padding: "12px",
+              padding: "8px 16px",
               backgroundColor: "#8A1739",
               color: "white",
               border: "none",
               borderRadius: "8px",
               cursor: "pointer",
+              marginTop: "0.5rem",
             }}
           >
-            Sign Up
+            Logout
           </button>
-        </form>
+        </div>
+      </header>
+      
+      <div className="stats-grid">
+        <Card href="/stats/topClassesEnrollment" title="Top 10 Classes by Enrollment" />
+        <Card href="/stats/topCoursesGrade" title="Top 10 Highest Average Grade Courses" />
+        <Card href="/stats/topStudentsGpa" title="Top 10 Students by GPA" />
+        <Card href="/stats/topCategoriesGrade" title="Top 10 Highest Average Grade Categories" />
+        <Card href="/stats/bestCourseinCategory" title="Best Course Grade Average in Each Category" />
+        <Card href="/stats/studentsPerCategory" title="Number of Students in Each Category" />
+        <Card href="/stats/instructorsPerCategory" title="Number of Instructors in Each Category" />
+        <Card href="/stats/instructorAVG" title="Average Grade per Instructor" />
+        <Card href="/stats/StudentCourseInstructorANDgrade" title="Student, Course, Instructor & Grade" />
+        <Card href="/stats/LowestGradeForEachStudent" title="Lowest Grade For Each Student" />
+        <Card href="/stats/DeansList" title="Dean's List" />
       </div>
     </div>
   );
