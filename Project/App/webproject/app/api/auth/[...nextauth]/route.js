@@ -2,14 +2,12 @@
 import NextAuth from "next-auth";
 import GitHubProvider from "next-auth/providers/github";
 import CredentialsProvider from "next-auth/providers/credentials";
-import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import { PrismaClient } from "@prisma/client";
 import bcrypt from "bcrypt";
 
 const prisma = new PrismaClient();
 
 const authOptions = {
-  adapter: PrismaAdapter(prisma),
   providers: [
     CredentialsProvider.default({
       name: "Credentials",
@@ -41,6 +39,7 @@ const authOptions = {
               id: user.username,
               username: user.username,
               type: user.type,
+              name: user.username
             };
           }
           
@@ -52,6 +51,7 @@ const authOptions = {
                 id: user.username,
                 username: user.username,
                 type: user.type,
+                name: user.username 
               };
             }
           } catch (bcryptError) {
@@ -64,6 +64,7 @@ const authOptions = {
               id: user.username,
               username: user.username,
               type: user.type,
+              name: user.username 
             };
           }
           
@@ -79,8 +80,29 @@ const authOptions = {
     GitHubProvider.default({
       clientId: process.env.GITHUB_ID,
       clientSecret: process.env.GITHUB_SECRET,
-      profile(profile) {
+      async profile(profile) {
         console.log("GitHub profile:", profile);
+        
+        let user = await prisma.user.findUnique({
+          where: { username: profile.login }
+        }).catch(() => null);
+        
+        if (!user) {
+          try {
+            user = await prisma.user.create({
+              data: {
+                username: profile.login,
+                password: "github-auth-" + Math.random().toString(36).substring(2),
+                type: "github",
+              }
+            });
+            console.log("Created new GitHub user:", profile.login);
+          } catch (error) {
+            console.error("Error creating GitHub user:", error);
+            throw error;
+          }
+        }
+        
         return {
           id: profile.login,
           username: profile.login,
@@ -96,6 +118,7 @@ const authOptions = {
       if (user) {
         token.username = user.username;
         token.type = user.type;
+        token.name = user.name || user.username;
       }
       return token;
     },
@@ -106,7 +129,7 @@ const authOptions = {
         }
         session.user.username = token.username;
         session.user.type = token.type;
-        session.user.name = token.name || token.username; 
+        session.user.name = token.name || token.username;
       }
       return session;
     },
@@ -116,6 +139,7 @@ const authOptions = {
   },
   pages: {
     signIn: "/auth/signin",
+    error: "/auth/signin",
   },
   secret: process.env.NEXTAUTH_SECRET,
   debug: process.env.NODE_ENV !== 'production',
