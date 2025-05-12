@@ -1,3 +1,5 @@
+// app/api/users/route.js
+
 import { PrismaClient } from "@prisma/client";
 import bcrypt from "bcrypt";
 import { signJwt } from "@/app/lib/jwt";

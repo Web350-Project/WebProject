@@ -23,25 +23,43 @@ const authOptions = {
           return null;
         }
 
-        // Log attempt to debug
         console.log(`Login attempt for username: ${credentials.username}`);
 
         try {
-          // Find the user in the database
           const user = await prisma.user.findUnique({
             where: { username: credentials.username },
           });
 
-          // Debug: Check if user was found
           if (!user) {
             console.log(`User not found: ${credentials.username}`);
             return null;
           }
 
-          // Check if password is "123" (for the test users shown in the screenshot)
-          // In production, you should use proper password verification with bcrypt
-          if (credentials.password === "123") {
-            console.log(`Authentication successful for: ${user.username}`);
+          if (user.password === "123" && credentials.password === "123") {
+            console.log(`Authentication successful (plaintext) for: ${user.username}`);
+            return {
+              id: user.username,
+              username: user.username,
+              type: user.type,
+            };
+          }
+          
+          try {
+            const isValidPassword = await bcrypt.compare(credentials.password, user.password);
+            if (isValidPassword) {
+              console.log(`Authentication successful (bcrypt) for: ${user.username}`);
+              return {
+                id: user.username,
+                username: user.username,
+                type: user.type,
+              };
+            }
+          } catch (bcryptError) {
+            console.log("Not a bcrypt hash, continuing with direct comparison");
+          }
+          
+          if (credentials.password === user.password) {
+            console.log(`Authentication successful (direct comparison) for: ${user.username}`);
             return {
               id: user.username,
               username: user.username,
@@ -75,7 +93,6 @@ const authOptions = {
   ],
   callbacks: {
     async jwt({ token, user }) {
-      // If the user object is available (on sign in), add custom properties to the token
       if (user) {
         token.username = user.username;
         token.type = user.type;
@@ -83,14 +100,13 @@ const authOptions = {
       return token;
     },
     async session({ session, token }) {
-      // Add custom properties to the session from the token
       if (token) {
-        // Ensure session.user exists
         if (!session.user) {
           session.user = {};
         }
         session.user.username = token.username;
         session.user.type = token.type;
+        session.user.name = token.name || token.username; 
       }
       return session;
     },
@@ -107,5 +123,4 @@ const authOptions = {
 
 const handler = NextAuth.default(authOptions);
 
-// Export the handler for both GET and POST requests
 export { handler as GET, handler as POST };
