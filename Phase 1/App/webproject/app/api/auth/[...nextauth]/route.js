@@ -1,3 +1,4 @@
+// app/api/auth/[...nextauth]/route.js
 import NextAuth from "next-auth";
 import GitHubProvider from "next-auth/providers/github";
 import CredentialsProvider from "next-auth/providers/credentials";
@@ -7,7 +8,7 @@ import bcrypt from "bcrypt";
 
 const prisma = new PrismaClient();
 
-export const authOptions = {
+const authOptions = {
   adapter: PrismaAdapter(prisma),
   providers: [
     CredentialsProvider.default({
@@ -70,7 +71,10 @@ export const authOptions = {
     signIn: "/auth/signin",
   },
   secret: process.env.NEXTAUTH_SECRET,
-  debug: true, // Enable debug mode for detailed logs
+  debug: true,
 };
 
-export const { handlers, auth, signIn, signOut } = NextAuth.default(authOptions);
+const handler = NextAuth.default(authOptions);
+
+// Export the handler for both GET and POST requests
+export { handler as GET, handler as POST };
