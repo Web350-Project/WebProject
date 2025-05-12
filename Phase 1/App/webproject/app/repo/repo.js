@@ -17,6 +17,7 @@ class repo {
             take: 10
         })
     }
+
     async getTopCoursesByGrade() {
         return await prisma.$queryRaw`
             SELECT 
